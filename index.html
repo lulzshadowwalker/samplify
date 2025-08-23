@@ -910,21 +910,21 @@
                 body: data
             });
             if (res.ok) {
-                // statusEl.textContent = 'Thanks! Your message has been sent.';
-                // statusEl.className = 'text-sm text-green-600';
+                statusEl.textContent = 'Thanks! Your message has been sent.';
+                statusEl.className = 'text-sm text-green-600';
                 showToast('Thanks! Your message has been sent.', 'success');
                 form.reset();
             } else {
                 const err = await res.json().catch(() => ({}));
                 const msg = err.error || 'Something went wrong. Please try again later.';
-                // statusEl.textContent = msg;
-                // statusEl.className = 'text-sm text-red-600';
+                statusEl.textContent = msg;
+                statusEl.className = 'text-sm text-red-600';
                 showToast(msg, 'error');
             }
         } catch (err) {
             const msg = 'Network error. Please check your connection and try again.';
-            // statusEl.textContent = msg;
-            // statusEl.className = 'text-sm text-red-600';
+            statusEl.textContent = msg;
+            statusEl.className = 'text-sm text-red-600';
             showToast(msg, 'error');
         } finally {
             submitBtn.disabled = false;
