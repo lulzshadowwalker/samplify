@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://samplify.net/sitemap.xml

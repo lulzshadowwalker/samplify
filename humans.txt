@@ -1,0 +1,11 @@
+/* TEAM */
+Samplify — Medical Sample Logistics
+Website: https://samplify.lulzie.online
+Contact: businessdevelopment@samplify.net
+Developer: lulzshadowwalker@gmail.com
+
+/* THANKS */
+Built with Tailwind CSS, Font Awesome, and Formspree
+
+/* SITE */
+Last update: 2025-08-23

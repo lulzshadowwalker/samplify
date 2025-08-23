@@ -1,0 +1,21 @@
+{
+  "name": "Samplify",
+  "short_name": "Samplify",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0ea5e9",
+  "theme_color": "#0ea5e9",
+  "description": "Samplify is a Saudi Arabia-based medical sample logistics company delivering real-time tracking, temperature assurance, and seamless digital integration.",
+  "icons": [
+    {
+      "src": "assets/logo-small.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/logo.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ]
+}
