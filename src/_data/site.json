@@ -1,0 +1,14 @@
+{
+  "name": "Samplify",
+  "title": "Samplify — Simplify the Process, Amplify the Precision",
+  "description": "Samplify is a Saudi Arabia-based medical sample logistics company delivering real-time tracking, temperature assurance, and seamless digital integration.",
+  "ogTitle": "Samplify — Medical Sample Logistics",
+  "ogDescription": "Transforming medical sample logistics with precision, safety, and innovation aligned with Saudi Vision 2030.",
+  "ogImage": "/assets/logo.png",
+  "twitterCard": "summary_large_image",
+  "googleAnalyticsId": "G-8JX5C1X9M3",
+  "posthogKey": "phc_B0N1Ko2wiFmSUh4KyZUAewZUdTbAiK6zuc0Ely3oEqZ",
+  "posthogHost": "https://us.i.posthog.com",
+  "posthogDefaults": "2025-05-24",
+  "analyticsEnabled": true
+}
