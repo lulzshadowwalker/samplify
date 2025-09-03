@@ -198,7 +198,7 @@ ogDescription: Visual showcase of Samplify's advanced medical sample logistics s
               tabindex="0"
               role="button"
               aria-label="Open video: Receiving workflow demonstration">
-              <source src="assets/videos/receiving.webm" type="video/webm">
+              <source src="/assets/videos/receiving.webm" type="video/webm">
               Your browser does not support the video tag.
             </video>
           </div>
@@ -232,7 +232,7 @@ ogDescription: Visual showcase of Samplify's advanced medical sample logistics s
               tabindex="0"
               role="button"
               aria-label="Open video: Searching workflow demonstration">
-              <source src="assets/videos/searching.webm" type="video/webm">
+              <source src="/assets/videos/searching.webm" type="video/webm">
               Your browser does not support the video tag.
             </video>
           </div>
@@ -266,7 +266,7 @@ ogDescription: Visual showcase of Samplify's advanced medical sample logistics s
               tabindex="0"
               role="button"
               aria-label="Open video: Sending workflow demonstration">
-              <source src="assets/videos/sending.webm" type="video/webm">
+              <source src="/assets/videos/sending.webm" type="video/webm">
               Your browser does not support the video tag.
             </video>
           </div>
@@ -372,26 +372,26 @@ ogDescription: Visual showcase of Samplify's advanced medical sample logistics s
     const galleryData = [
       // Gallery images (devices category)
       ...Array.from({ length: 21 }, (_, i) => ({
-        src: `assets/gallery/gallery-${i + 1}.webp`,
+        src: `/assets/gallery/gallery-${i + 1}.webp`,
         caption: `Samplify Technology Showcase ${i + 1}`,
         category: 'devices',
         type: 'image'
       })),
       // Workflow videos
       {
-        src: 'assets/videos/receiving.webm',
+        src: '/assets/videos/receiving.webm',
         caption: 'Receiving Workflow — Automated inbound sample handling with RFID identification and system integration',
         category: 'workflows',
         type: 'video'
       },
       {
-        src: 'assets/videos/searching.webm',
+        src: '/assets/videos/searching.webm',
         caption: 'Searching Workflow — Real-time sample location and tracking with comprehensive audit trails',
         category: 'workflows',
         type: 'video'
       },
       {
-        src: 'assets/videos/sending.webm',
+        src: '/assets/videos/sending.webm',
         caption: 'Sending Workflow — Automated outbound dispatch with GPS tracking and delivery confirmation',
         category: 'workflows',
         type: 'video'

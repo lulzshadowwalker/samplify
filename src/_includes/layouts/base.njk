@@ -340,7 +340,7 @@
 
     // 1) Build gallery items (if gallery exists)
     if (galleryGrid) {
-      const galleryImages = Array.from({ length: 21 }, (_, i) => `assets/gallery/gallery-${i + 1}.webp`);
+      const galleryImages = Array.from({ length: 21 }, (_, i) => `/assets/gallery/gallery-${i + 1}.webp`);
       const visibleCount = 9;
       for (const src of galleryImages.slice(0, visibleCount)) {
         const figure = document.createElement('figure');
@@ -358,9 +358,9 @@
 
       // Append three video items as gallery thumbnails (muted previews)
       const videos = [
-        { src: 'assets/videos/receiving.webm', caption: 'Receiving — inbound sample handling (Samplify)', label: 'Open video: Receiving' },
-        { src: 'assets/videos/searching.webm', caption: 'Searching — locating samples with traceability (Samplify)', label: 'Open video: Searching' },
-        { src: 'assets/videos/sending.webm', caption: 'Sending — outbound dispatch workflow (Samplify)', label: 'Open video: Sending' }
+        { src: '/assets/videos/receiving.webm', caption: 'Receiving — inbound sample handling (Samplify)', label: 'Open video: Receiving' },
+        { src: '/assets/videos/searching.webm', caption: 'Searching — locating samples with traceability (Samplify)', label: 'Open video: Searching' },
+        { src: '/assets/videos/sending.webm', caption: 'Sending — outbound dispatch workflow (Samplify)', label: 'Open video: Sending' }
       ];
       for (const v of videos) {
         const figure = document.createElement('figure');
