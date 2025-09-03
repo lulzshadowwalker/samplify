@@ -10,5 +10,5 @@
   "posthogKey": "phc_B0N1Ko2wiFmSUh4KyZUAewZUdTbAiK6zuc0Ely3oEqZ",
   "posthogHost": "https://us.i.posthog.com",
   "posthogDefaults": "2025-05-24",
-  "analyticsEnabled": true
+  "analyticsEnabled": false
 }

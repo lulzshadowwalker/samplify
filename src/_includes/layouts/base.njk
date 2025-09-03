@@ -32,7 +32,9 @@
       "addressCountry": "Kingdom of Saudi Arabia"
     },
     "sameAs": [
-      "https://www.linkedin.com/company/samplifyhealthcarelogistics/"
+      "https://www.linkedin.com/company/samplifyhealthcarelogistics/",
+      "https://www.facebook.com/Samplify.sa/",
+      "https://www.instagram.com/samplify.sa/"
     ],
     "contactPoint": [
       {
@@ -279,6 +281,27 @@
         } finally { submitBtn.disabled = false; }
       });
     }
+
+    // Prefill contact form when clicking Request a Demo
+    document.querySelectorAll('a[data-demo]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const msg = document.getElementById('message');
+        if (msg && !msg.value) {
+          msg.value = "I'd like to request a demo of Samplify.";
+        }
+      });
+    });
+
+    // Image fallback for missing assets (avoid broken images)
+    document.querySelectorAll('img.with-fallback[data-fallback]').forEach(img => {
+      img.addEventListener('error', () => {
+        const note = document.createElement('div');
+        note.className = 'w-full rounded-lg border border-slate-200 bg-slate-50 p-4 text-slate-600 text-sm';
+        note.setAttribute('role', 'note');
+        note.textContent = img.getAttribute('data-fallback') || 'Image currently unavailable.';
+        img.replaceWith(note);
+      }, { once: true });
+    });
   </script>
 </body>
 </html>

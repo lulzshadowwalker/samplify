@@ -30,15 +30,15 @@ layout: layouts/base.njk
     <div class="grid lg:grid-cols-2 gap-10 items-center">
       <div class="text-white reveal">
         <h1 id="heroHeadline" class="typing text-3xl sm:text-5xl font-extrabold tracking-tight">SIMPLIFY THE PROCESS, AMPLIFY THE PRECISION</h1>
-        <p class="mt-6 text-base sm:text-lg text-white/90 max-w-xl">Saudi-born medical sample logistics engineered for real-time tracking, temperature assurance, and seamless digital integration—built to replace manual processes with precision, speed, and safety.</p>
+        <p class="mt-6 text-base sm:text-lg text-white/90 max-w-xl">Smart, traceable medical sample logistics designed for accuracy, efficiency, and patient safety.</p>
         <div class="mt-8 flex flex-wrap items-center gap-4">
-          <a href="#solutions" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-white text-deepblue-900 font-medium hover:shadow-lg hover:-translate-y-0.5 transition focus-ring">
-            Discover Our Solutions
+          <a href="#about" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-white text-deepblue-900 font-medium hover:shadow-lg hover:-translate-y-0.5 transition focus-ring" aria-label="Discover Samplify">
+            Discover Samplify
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
             </svg>
           </a>
-          <a href="#contact" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl border border-white/50 text-white hover:bg-white/10 transition focus-ring">Contact Us</a>
+          <a href="#contact" data-demo="true" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl border border-white/50 text-white hover:bg-white/10 transition focus-ring" aria-label="Request a demo">Request a Demo</a>
         </div>
       </div>
       <div class="reveal">
@@ -115,8 +115,8 @@ layout: layouts/base.njk
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-10 items-start">
     <div class="reveal">
       <h2 id="about-title" class="text-2xl sm:text-3xl font-bold text-deepblue-900">About Us</h2>
-      <p class="mt-4 text-slate-700 leading-relaxed">Founded in Saudi Arabia and aligned with Vision 2030, we are redefining medical sample logistics through locally designed and manufactured solutions. Our technology delivers real-time tracking, temperature-controlled transport, and seamless digital integration to replace traditional manual processes—reducing delays, minimizing errors, and improving patient care quality.</p>
-      <p class="mt-4 text-slate-700 leading-relaxed">With the region's healthcare sector rapidly transforming—driven by digitalization, centralization of lab services, and growing diagnostic demand—we provide smart, scalable, and compliant solutions that empower medical institutions to operate with precision, efficiency, and full traceability.</p>
+      <p class="mt-4 text-slate-700 leading-relaxed">Samplify is a Saudi-born health tech company redefining medical sample logistics in line with Vision 2030. We design and manufacture innovative solutions that ensure samples are transported with accuracy, efficiency, and full traceability.</p>
+      <p class="mt-4 text-slate-700 leading-relaxed">Our technology delivers real-time location and temperature tracking, digital integration with various LIS and TMS systems, automated sorting, helps improve compliance and strengthen patient care by empowering hospitals, laboratories, and logistics providers to safeguard sample integrity.</p>
     </div>
     <div class="reveal">
       <div class="relative p-1 rounded-3xl bg-gradient-to-r from-skybrand-300 to-skybrand-500">
@@ -146,6 +146,206 @@ layout: layouts/base.njk
           </ul>
         </div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- How It Works -->
+<section id="how-it-works" class="py-16 sm:py-20 bg-slate-50" aria-labelledby="how-title">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-10 reveal">
+      <h2 id="how-title" class="text-2xl sm:text-3xl font-bold text-deepblue-900">How It Works</h2>
+      <p class="mt-2 text-slate-600">From collection to reference lab with full traceability.</p>
+    </div>
+    <div class="reveal flex flex-col items-center gap-6 sm:gap-8">
+      <ol class="flex flex-col sm:flex-row items-center gap-6 sm:gap-8 text-center">
+        <li class="flex flex-col items-center">
+          <div class="h-14 w-14 rounded-xl bg-white shadow-glow grid place-items-center" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-7 w-7 text-skybrand-500"><path d="M12 2a7 7 0 00-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 00-7-7zm0 9a2 2 0 110-4 2 2 0 010 4z"/></svg>
+          </div>
+          <span class="mt-3 font-medium text-deepblue-900">Collection Center</span>
+        </li>
+        <li aria-hidden="true" class="hidden sm:block text-white/70">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-6 w-6"><path d="M13 5l7 7-7 7v-4H4v-6h9V5z"/></svg>
+        </li>
+        <li class="flex flex-col items-center">
+          <div class="h-14 w-14 rounded-xl bg-white shadow-glow grid place-items-center" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-7 w-7 text-skybrand-500"><path d="M3 7h13v10H3V7zm14 4h2l2 3v3h-4v-6z"/></svg>
+          </div>
+          <span class="mt-3 font-medium text-deepblue-900">Transportation</span>
+        </li>
+        <li aria-hidden="true" class="hidden sm:block text-white/70">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-6 w-6"><path d="M13 5l7 7-7 7v-4H4v-6h9V5z"/></svg>
+        </li>
+        <li class="flex flex-col items-center">
+          <div class="h-14 w-14 rounded-xl bg-white shadow-glow grid place-items-center" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-7 w-7 text-skybrand-500"><path d="M7 2h10v2H7V2zm2 4h6v6a3 3 0 11-6 0V6zM7 20h10v2H7v-2z"/></svg>
+          </div>
+          <span class="mt-3 font-medium text-deepblue-900">Reference Lab</span>
+        </li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- Key Features of Samplify -->
+<section id="features" class="py-16 sm:py-20 bg-white" aria-labelledby="features-title">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-10 reveal">
+      <h2 id="features-title" class="text-2xl sm:text-3xl font-bold text-deepblue-900">Key Features of Samplify</h2>
+      <p class="mt-2 text-slate-600">Engineered to minimize errors and maximize efficiency.</p>
+    </div>
+    <div class="grid md:grid-cols-2 gap-4 reveal">
+      <div class="flex items-start gap-3">
+        <span class="mt-1 text-skybrand-500" aria-hidden="true">✔</span>
+        <p><strong>Touch-Free Handling</strong> — Minimize contamination and human error.</p>
+      </div>
+      <div class="flex items-start gap-3">
+        <span class="mt-1 text-skybrand-500" aria-hidden="true">✔</span>
+        <p><strong>End-to-End Tracking</strong> — Monitor every sample in real-time.</p>
+      </div>
+      <div class="flex items-start gap-3">
+        <span class="mt-1 text-skybrand-500" aria-hidden="true">✔</span>
+        <p><strong>Temperature Tracking</strong> — Monitor conditions in real-time to prevent errors.</p>
+      </div>
+      <div class="flex items-start gap-3">
+        <span class="mt-1 text-skybrand-500" aria-hidden="true">✔</span>
+        <p><strong>Faster Processing</strong> — Accelerate workflows and streamline handovers.</p>
+      </div>
+      <div class="flex items-start gap-3">
+        <span class="mt-1 text-skybrand-500" aria-hidden="true">✔</span>
+        <p><strong>Smart Sorting</strong> — Reduce errors and improve efficiency with intelligent rack management.</p>
+      </div>
+      <div class="flex items-start gap-3">
+        <span class="mt-1 text-skybrand-500" aria-hidden="true">✔</span>
+        <p><strong>High Adaptability</strong> — Easily adjusts to any workflow and integrates with LIS &amp; TMS.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Who We Serve -->
+<section id="who-we-serve" class="py-16 sm:py-20 bg-slate-50" aria-labelledby="serve-title">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-10 reveal">
+      <h2 id="serve-title" class="text-2xl sm:text-3xl font-bold text-deepblue-900">Who We Serve</h2>
+      <p class="mt-2 text-slate-600">We partner with organizations across healthcare and logistics.</p>
+    </div>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 reveal" role="list">
+      <!-- Hospitals & Clinics -->
+      <article role="listitem" class="group rounded-2xl bg-white border border-slate-200 p-5 hover:shadow-lg hover:-translate-y-0.5 transition focus-within:ring-2 focus-within:ring-skybrand-500/50">
+        <div class="h-11 w-11 rounded-xl bg-gradient-to-br from-skybrand-300 to-skybrand-500 text-white flex items-center justify-center shadow-glow" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-6 w-6"><path d="M10 2h4v6h6v4h-6v6h-4v-6H4V8h6V2z"/></svg>
+        </div>
+        <h3 class="mt-4 font-semibold text-deepblue-900">Hospitals &amp; Clinics</h3>
+        <p class="mt-1 text-sm text-slate-600">Digitally tracked handovers from collection to lab.</p>
+      </article>
+      <!-- Medical Laboratories -->
+      <article role="listitem" class="group rounded-2xl bg-white border border-slate-200 p-5 hover:shadow-lg hover:-translate-y-0.5 transition focus-within:ring-2 focus-within:ring-skybrand-500/50">
+        <div class="h-11 w-11 rounded-xl bg-gradient-to-br from-skybrand-300 to-skybrand-500 text-white flex items-center justify-center shadow-glow" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-6 w-6"><path d="M7 2h10v2H7V2zm2 4h6v6a3 3 0 11-6 0V6zM7 20h10v2H7v-2z"/></svg>
+        </div>
+        <h3 class="mt-4 font-semibold text-deepblue-900">Medical Laboratories</h3>
+        <p class="mt-1 text-sm text-slate-600">RFID traceability and integration with LIS.</p>
+      </article>
+      <!-- Medical Companies -->
+      <article role="listitem" class="group rounded-2xl bg-white border border-slate-200 p-5 hover:shadow-lg hover:-translate-y-0.5 transition focus-within:ring-2 focus-within:ring-skybrand-500/50">
+        <div class="h-11 w-11 rounded-xl bg-gradient-to-br from-skybrand-300 to-skybrand-500 text-white flex items-center justify-center shadow-glow" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-6 w-6"><path d="M4 4h16v6H4V4zm0 10h16v6H4v-6zm2 2h12v2H6v-2z"/></svg>
+        </div>
+        <h3 class="mt-4 font-semibold text-deepblue-900">Medical Companies</h3>
+        <p class="mt-1 text-sm text-slate-600">Reliable logistics to support diagnostic workflows.</p>
+      </article>
+      <!-- Logistics Companies -->
+      <article role="listitem" class="group rounded-2xl bg-white border border-slate-200 p-5 hover:shadow-lg hover:-translate-y-0.5 transition focus-within:ring-2 focus-within:ring-skybrand-500/50">
+        <div class="h-11 w-11 rounded-xl bg-gradient-to-br from-skybrand-300 to-skybrand-500 text-white flex items-center justify-center shadow-glow" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-6 w-6"><path d="M3 7h13v10H3V7zm14 4h2l2 3v3h-4v-6z"/></svg>
+        </div>
+        <h3 class="mt-4 font-semibold text-deepblue-900">Logistics Companies</h3>
+        <p class="mt-1 text-sm text-slate-600">Temperature‑aware transport and real‑time tracking.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- Our Solution -->
+<section id="solution" class="py-16 sm:py-20 bg-white" aria-labelledby="solution-title">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-10 reveal">
+      <h2 id="solution-title" class="text-2xl sm:text-3xl font-bold text-deepblue-900">The Samplify Solution</h2>
+      <p class="mt-2 text-slate-600">Our solution consists of three elements: device, RFID-enabled racks, and software.</p>
+    </div>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <!-- Device -->
+      <article class="reveal rounded-2xl border border-slate-200 p-4 bg-white hover:shadow-lg transition">
+        <div class="relative w-full overflow-hidden rounded-lg bg-slate-50 border border-slate-100">
+          <div class="pt-[100%]"></div>
+          <img src="assets/images/samplify-device.webp" alt="Samplify device" loading="lazy" decoding="async" class="absolute inset-0 h-full w-full object-cover with-fallback" data-fallback="Samplify device image coming soon."/>
+        </div>
+        <h3 class="mt-4 font-semibold text-deepblue-900 text-center">Samplify Device</h3>
+        <p class="mt-1 text-center text-sm text-slate-600">Smart unit engineered for safe, traceable transport.</p>
+      </article>
+      <!-- RFID Racks -->
+      <article class="reveal rounded-2xl border border-slate-200 p-4 bg-white hover:shadow-lg transition">
+        <div class="relative w-full overflow-hidden rounded-lg bg-slate-50 border border-slate-100">
+          <div class="pt-[100%]"></div>
+          <img src="assets/images/rfid.webp" alt="RFID-enabled racks" loading="lazy" decoding="async" class="absolute inset-0 h-full w-full object-cover with-fallback" data-fallback="RFID racks image coming soon."/>
+        </div>
+        <h3 class="mt-4 font-semibold text-deepblue-900 text-center">Racks with integrated RFID</h3>
+        <p class="mt-1 text-center text-sm text-slate-600">Intelligent rack management to reduce sorting errors.</p>
+      </article>
+      <!-- Software -->
+      <article class="reveal rounded-2xl border border-slate-200 p-4 bg-white hover:shadow-lg transition">
+        <div class="relative w-full overflow-hidden rounded-lg bg-slate-50 border border-slate-100">
+          <div class="pt-[100%]"></div>
+          <img src="assets/images/software.webp" alt="Samplify software dashboard" loading="lazy" decoding="async" class="absolute inset-0 h-full w-full object-cover with-fallback" data-fallback="Software image coming soon."/>
+        </div>
+        <h3 class="mt-4 font-semibold text-deepblue-900 text-center">Software</h3>
+        <p class="mt-1 text-center text-sm text-slate-600">Real‑time location and temperature tracking with LIS/TMS integration.</p>
+      </article>
+      <!-- Complete Solution -->
+      <article class="reveal rounded-2xl border border-slate-200 p-4 bg-white hover:shadow-lg transition">
+        <div class="relative w-full overflow-hidden rounded-lg bg-slate-50 border border-slate-100">
+          <div class="pt-[100%]"></div>
+          <img src="assets/images/samplify-solution.webp" alt="Complete Samplify solution overview" loading="lazy" decoding="async" class="absolute inset-0 h-full w-full object-cover with-fallback" data-fallback="Complete solution image coming soon."/>
+        </div>
+        <h3 class="mt-4 font-semibold text-deepblue-900 text-center">Complete Solution</h3>
+        <p class="mt-1 text-center text-sm text-slate-600">The complete Samplify solution</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- Our Values (Optional) -->
+<section id="values" class="py-16 sm:py-20 bg-slate-50" aria-labelledby="values-title">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-10 reveal">
+      <h2 id="values-title" class="text-2xl sm:text-3xl font-bold text-deepblue-900">Our Values</h2>
+    </div>
+    <div class="grid md:grid-cols-3 gap-6">
+      <article class="reveal rounded-2xl p-6 bg-white border border-slate-200">
+        <h3 class="text-lg font-semibold text-deepblue-900">Patient-Centricity</h3>
+        <p class="mt-2 text-slate-700">Every decision prioritizes patient safety and care — because reliable sample logistics can save lives.</p>
+      </article>
+      <article class="reveal rounded-2xl p-6 bg-white border border-slate-200">
+        <h3 class="text-lg font-semibold text-deepblue-900">Durability &amp; Reliability</h3>
+        <p class="mt-2 text-slate-700">Built to last and perform with consistency. Every sample is tracked, traceable, and delivered accurately.</p>
+      </article>
+      <article class="reveal rounded-2xl p-6 bg-white border border-slate-200">
+        <h3 class="text-lg font-semibold text-deepblue-900">Innovation</h3>
+        <p class="mt-2 text-slate-700">We apply technology to replace manual, error-prone processes and optimize operations for maximum impact.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- CTA: Request a Demo / Contact -->
+<section id="demo-cta" class="py-10 bg-gradient-to-r from-skybrand-300 to-skybrand-500" aria-label="Request a demo">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
+    <h2 class="text-xl sm:text-2xl font-semibold">Ready to transform your medical logistics?</h2>
+    <div class="mt-5 flex flex-wrap justify-center gap-4">
+      <a href="#contact" data-demo="true" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-white text-deepblue-900 font-medium hover:shadow-lg focus-ring" aria-label="Request a demo">Request a Demo</a>
+      <a href="#contact" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl border border-white/70 text-white hover:bg-white/10 focus-ring" aria-label="Contact us">Contact Us</a>
     </div>
   </div>
 </section>
@@ -262,6 +462,14 @@ layout: layouts/base.njk
           <div class="flex gap-3 items-center">
             <i class="fa-brands fa-linkedin text-skybrand-500"></i>
             <a href="https://www.linkedin.com/company/samplifyhealthcarelogistics/" target="_blank" rel="noopener" class="hover:underline">LinkedIn</a>
+          </div>
+          <div class="flex gap-3 items-center">
+            <i class="fa-brands fa-facebook text-skybrand-500"></i>
+            <a href="https://www.facebook.com/Samplify.sa/" target="_blank" rel="noopener" class="hover:underline">Facebook</a>
+          </div>
+          <div class="flex gap-3 items-center">
+            <i class="fa-brands fa-instagram text-skybrand-500"></i>
+            <a href="https://www.instagram.com/samplify.sa/" target="_blank" rel="noopener" class="hover:underline">Instagram</a>
           </div>
           <div class="flex gap-3 items-center">
             <i class="fa-solid fa-location-dot text-skybrand-500"></i>
