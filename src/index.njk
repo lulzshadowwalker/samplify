@@ -280,7 +280,7 @@ layout: layouts/base.njk
       <article class="reveal rounded-2xl border border-slate-200 p-4 bg-white hover:shadow-lg transition">
         <div class="relative w-full overflow-hidden rounded-lg bg-slate-50 border border-slate-100">
           <div class="pt-[100%]"></div>
-          <img src="assets/images/samplify-device.webp" alt="Samplify device" loading="lazy" decoding="async" class="absolute inset-0 h-full w-full object-cover with-fallback" data-fallback="Samplify device image coming soon."/>
+          <img src="assets/images/samplify-device.webp" alt="Samplify device" loading="lazy" decoding="async" class="absolute inset-0 h-full w-full object-cover with-fallback" data-fallback="Samplify device image coming soon." data-lightbox="solution" data-caption="Samplify Device — Smart unit engineered for safe, traceable transport."/>
         </div>
         <h3 class="mt-4 font-semibold text-deepblue-900 text-center">Samplify Device</h3>
         <p class="mt-1 text-center text-sm text-slate-600">Smart unit engineered for safe, traceable transport.</p>
@@ -289,7 +289,7 @@ layout: layouts/base.njk
       <article class="reveal rounded-2xl border border-slate-200 p-4 bg-white hover:shadow-lg transition">
         <div class="relative w-full overflow-hidden rounded-lg bg-slate-50 border border-slate-100">
           <div class="pt-[100%]"></div>
-          <img src="assets/images/rfid.webp" alt="RFID-enabled racks" loading="lazy" decoding="async" class="absolute inset-0 h-full w-full object-cover with-fallback" data-fallback="RFID racks image coming soon."/>
+          <img src="assets/images/rfid.webp" alt="RFID-enabled racks" loading="lazy" decoding="async" class="absolute inset-0 h-full w-full object-cover with-fallback" data-fallback="RFID racks image coming soon." data-lightbox="solution" data-caption="RFID Racks — Intelligent rack management to reduce sorting errors."/>
         </div>
         <h3 class="mt-4 font-semibold text-deepblue-900 text-center">Racks with integrated RFID</h3>
         <p class="mt-1 text-center text-sm text-slate-600">Intelligent rack management to reduce sorting errors.</p>
@@ -298,7 +298,7 @@ layout: layouts/base.njk
       <article class="reveal rounded-2xl border border-slate-200 p-4 bg-white hover:shadow-lg transition">
         <div class="relative w-full overflow-hidden rounded-lg bg-slate-50 border border-slate-100">
           <div class="pt-[100%]"></div>
-          <img src="assets/images/software.webp" alt="Samplify software dashboard" loading="lazy" decoding="async" class="absolute inset-0 h-full w-full object-cover with-fallback" data-fallback="Software image coming soon."/>
+          <img src="assets/images/software.webp" alt="Samplify software dashboard" loading="lazy" decoding="async" class="absolute inset-0 h-full w-full object-cover with-fallback" data-fallback="Software image coming soon." data-lightbox="solution" data-caption="Software — Real‑time location and temperature tracking with LIS/TMS integration."/>
         </div>
         <h3 class="mt-4 font-semibold text-deepblue-900 text-center">Software</h3>
         <p class="mt-1 text-center text-sm text-slate-600">Real‑time location and temperature tracking with LIS/TMS integration.</p>
@@ -307,7 +307,7 @@ layout: layouts/base.njk
       <article class="reveal rounded-2xl border border-slate-200 p-4 bg-white hover:shadow-lg transition">
         <div class="relative w-full overflow-hidden rounded-lg bg-slate-50 border border-slate-100">
           <div class="pt-[100%]"></div>
-          <img src="assets/images/samplify-solution.webp" alt="Complete Samplify solution overview" loading="lazy" decoding="async" class="absolute inset-0 h-full w-full object-cover with-fallback" data-fallback="Complete solution image coming soon."/>
+          <img src="assets/images/samplify-solution.webp" alt="Complete Samplify solution overview" loading="lazy" decoding="async" class="absolute inset-0 h-full w-full object-cover with-fallback" data-fallback="Complete solution image coming soon." data-lightbox="solution" data-caption="Complete Solution — Device, RFID racks, and software working together."/>
         </div>
         <h3 class="mt-4 font-semibold text-deepblue-900 text-center">Complete Solution</h3>
         <p class="mt-1 text-center text-sm text-slate-600">The complete Samplify solution</p>
@@ -399,7 +399,10 @@ layout: layouts/base.njk
       <button id="lbPrev" class="absolute left-2 sm:left-6 p-2 rounded-lg bg-white/10 text-white hover:bg-white/20 focus-ring" aria-label="Previous image">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" viewBox="0 0 24 24" fill="currentColor"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
       </button>
-      <img id="lbImage" alt="Gallery image" class="max-h-[85vh] max-w-[92vw] rounded-lg shadow-2xl"/>
+      <figure class="flex flex-col items-center gap-3 text-white text-sm max-w-[92vw]">
+        <img id="lbImage" alt="Gallery image" class="max-h-[85vh] max-w-full rounded-lg shadow-2xl"/>
+        <figcaption id="lbCaption" class="opacity-90 text-center"></figcaption>
+      </figure>
       <button id="lbNext" class="absolute right-2 sm:right-6 p-2 rounded-lg bg-white/10 text-white hover:bg-white/20 focus-ring" aria-label="Next image">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" viewBox="0 0 24 24" fill="currentColor"><path d="M8.59 16.59L10 18l6-6-6-6-1.41 1.41L13.17 12z"/></svg>
       </button>
