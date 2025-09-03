@@ -334,7 +334,8 @@ ogDescription: Visual showcase of Samplify's advanced medical sample logistics s
 
 <script>
   // Gallery filter functionality and enhanced lightbox
-  document.addEventListener('DOMContentLoaded', function() {
+  // Wait for the window to fully load to ensure lightbox system is available
+  window.addEventListener('load', function() {
     const galleryGrid = document.getElementById('galleryGrid');
     const filterButtons = document.querySelectorAll('.filter-btn');
     const loadMoreBtn = document.getElementById('loadMoreBtn');
@@ -374,8 +375,19 @@ ogDescription: Visual showcase of Samplify's advanced medical sample logistics s
     
     function renderGallery() {
       if (!galleryGrid) return;
-      
       galleryGrid.innerHTML = '';
+      
+      // Clear only gallery-specific lightbox items, preserving static workflow videos
+      if (window.lbItems) {
+        // Remove only items that were from the dynamic gallery (not workflow videos)
+        window.lbItems = window.lbItems.filter(item => 
+          !item.src.startsWith('/assets/gallery/') && 
+          item.src !== '/assets/videos/receiving.webm' && 
+          item.src !== '/assets/videos/searching.webm' && 
+          item.src !== '/assets/videos/sending.webm'
+        );
+      }
+      
       const filteredData = currentFilter === 'all' ? galleryData : galleryData.filter(item => item.category === currentFilter);
       const itemsToShow = filteredData.slice(0, visibleCount);
       
@@ -394,15 +406,18 @@ ogDescription: Visual showcase of Samplify's advanced medical sample logistics s
           video.playsInline = true;
           video.autoplay = true;
           video.className = 'w-full h-auto block group-hover:scale-105 transition duration-500';
+          video.setAttribute('data-lightbox', 'gallery');
+          video.setAttribute('data-caption', item.caption);
+          video.setAttribute('tabindex', '0');
+          video.setAttribute('role', 'button');
+          video.setAttribute('aria-label', `Open video: ${item.caption}`);
           
-          // Add play icon overlay
           const overlay = document.createElement('div');
           overlay.className = 'absolute inset-0 bg-black/0 group-hover:bg-black/10 transition duration-500 flex items-center justify-center';
           const playIcon = document.createElement('div');
           playIcon.className = 'opacity-0 group-hover:opacity-100 transition duration-300 bg-white/90 rounded-full p-3';
           playIcon.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-8 w-8 text-deepblue-900"><path d="M8 5v14l11-7L8 5z"/></svg>';
           overlay.appendChild(playIcon);
-          
           figure.appendChild(video);
           figure.appendChild(overlay);
         } else {
@@ -413,18 +428,42 @@ ogDescription: Visual showcase of Samplify's advanced medical sample logistics s
           img.className = 'w-full h-auto block group-hover:scale-105 transition duration-500';
           img.style.opacity = '0';
           figure.classList.add('skeleton');
-          
           img.addEventListener('load', () => {
             img.style.opacity = '1';
             figure.classList.remove('skeleton');
           });
-          
           figure.appendChild(img);
         }
         
-        // Add to lightbox system
-        addLightboxItem(figure, item.src, item.caption, item.type);
         galleryGrid.appendChild(figure);
+        
+        // Add to lightbox system AND add direct click handler as backup
+        try {
+          if (window.addLightboxItem && typeof window.addLightboxItem === 'function') {
+            window.addLightboxItem(figure, item.src, item.caption, item.type);
+          } else {
+            console.warn('addLightboxItem function not available');
+          }
+        } catch (error) {
+          console.warn('Could not add item to lightbox:', error);
+        }
+        
+        // Direct click handler as backup
+        figure.addEventListener('click', (e) => {
+          e.preventDefault();
+          console.log('Direct click handler triggered for:', item.src);
+          if (window.openLightboxBySrc) {
+            window.openLightboxBySrc(item.src);
+          } else {
+            // If openLightboxBySrc not available, manually add and open
+            if (window.lbItems && window.addLightboxItem) {
+              window.addLightboxItem(figure, item.src, item.caption, item.type);
+              if (window.openLightboxBySrc) {
+                window.openLightboxBySrc(item.src);
+              }
+            }
+          }
+        });
       });
       
       // Show/hide load more button
@@ -457,5 +496,11 @@ ogDescription: Visual showcase of Samplify's advanced medical sample logistics s
     
     // Initial render
     renderGallery();
+    
+    // Debug: Check if lightbox items are being registered
+    setTimeout(() => {
+      console.log('Gallery items registered:', window.lbItems?.length || 0);
+      console.log('Lightbox items:', window.lbItems);
+    }, 500);
   });
 </script>

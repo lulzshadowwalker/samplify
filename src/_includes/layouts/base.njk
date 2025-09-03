@@ -266,15 +266,29 @@
     const lbItems = [];
 
     function addLightboxItem(el, src, caption, typeOverride) {
+      console.log('Adding lightbox item:', src, caption, typeOverride);
       // avoid duplicates by src
-      if (lbItems.find(i => i.src === src)) return;
+      if (lbItems.find(i => i.src === src)) {
+        console.log('Duplicate found, skipping:', src);
+        return;
+      }
       const inferredType = typeOverride || (el?.dataset?.mediaType) || (el?.tagName === 'VIDEO' ? 'video' : 'image');
       lbItems.push({ src, caption: caption || el?.alt || '', type: inferredType });
+      console.log('Added to lbItems. Total items:', lbItems.length);
+      
       // Click/keyboard to open
       const opener = el?.closest('[role="button"]') || el;
-      opener?.addEventListener('click', (e) => { e.preventDefault(); openLightboxBySrc(src); });
+      opener?.addEventListener('click', (e) => { 
+        console.log('Lightbox click triggered for:', src);
+        e.preventDefault(); 
+        openLightboxBySrc(src); 
+      });
       opener?.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openLightboxBySrc(src); }
+        if (e.key === 'Enter' || e.key === ' ') { 
+          console.log('Lightbox keydown triggered for:', src);
+          e.preventDefault(); 
+          openLightboxBySrc(src); 
+        }
       });
       if (opener && opener.tabIndex < 0) opener.tabIndex = 0;
       if (opener && !opener.getAttribute('aria-label')) opener.setAttribute('aria-label', 'Open media');
@@ -362,6 +376,11 @@
       if (e.key === 'ArrowRight') showIndex(currentIndex + 1);
     });
 
+    // Make functions globally accessible after all are defined
+    window.addLightboxItem = addLightboxItem;
+    window.lbItems = lbItems;
+    window.openLightboxBySrc = openLightboxBySrc;
+
     // 1) Build gallery items (if gallery exists)
     if (galleryGrid) {
       const galleryImages = Array.from({ length: 21 }, (_, i) => `/assets/gallery/gallery-${i + 1}.webp`);
@@ -414,6 +433,20 @@
       if (wrapper) { wrapper.setAttribute('role', 'button'); if (!wrapper.hasAttribute('tabindex')) wrapper.tabIndex = 0; }
       addLightboxItem(img, src, caption);
     });
+
+    // 3) Add any site-wide videos that opt-in via data-lightbox
+    // Use setTimeout to ensure this runs after gallery initialization
+    setTimeout(() => {
+      document.querySelectorAll('video[data-lightbox]').forEach(video => {
+        const src = video.getAttribute('src') || video.querySelector('source')?.getAttribute('src');
+        const caption = video.getAttribute('data-caption') || video.getAttribute('aria-label') || '';
+        if (!src) return;
+        // ensure element is keyboard-accessible (if not already)
+        if (video.tabIndex < 0) video.tabIndex = 0;
+        if (!video.getAttribute('role')) video.setAttribute('role', 'button');
+        addLightboxItem(video, src, caption, 'video');
+      });
+    }, 100);
 
     // Contact form validation & submission (only if present)
     const form = document.getElementById('contactForm');
