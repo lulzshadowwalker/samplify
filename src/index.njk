@@ -399,10 +399,13 @@ layout: layouts/base.njk
       <button id="lbPrev" class="absolute left-2 sm:left-6 p-2 rounded-lg bg-white/10 text-white hover:bg-white/20 focus-ring" aria-label="Previous image">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" viewBox="0 0 24 24" fill="currentColor"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
       </button>
-      <figure class="flex flex-col items-center gap-3 text-white text-sm max-w-[92vw]">
+      <div class="flex flex-col items-center gap-3 text-white text-sm max-w-[92vw]">
+        <!-- Image container -->
         <img id="lbImage" alt="Gallery image" class="max-h-[85vh] max-w-full rounded-lg shadow-2xl"/>
+        <!-- Video container (video.js player) -->
+        <video id="lbVideo" class="video-js vjs-big-play-centered rounded-lg shadow-2xl max-h-[85vh] max-w-full hidden" controls preload="auto" playsinline></video>
         <figcaption id="lbCaption" class="opacity-90 text-center"></figcaption>
-      </figure>
+      </div>
       <button id="lbNext" class="absolute right-2 sm:right-6 p-2 rounded-lg bg-white/10 text-white hover:bg-white/20 focus-ring" aria-label="Next image">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" viewBox="0 0 24 24" fill="currentColor"><path d="M8.59 16.59L10 18l6-6-6-6-1.41 1.41L13.17 12z"/></svg>
       </button>

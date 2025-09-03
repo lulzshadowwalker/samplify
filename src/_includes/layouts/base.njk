@@ -67,6 +67,10 @@
   <!-- Font Awesome -->
   <script src="https://kit.fontawesome.com/a51f251d24.js" crossorigin="anonymous"></script>
 
+  <!-- Video.js (for Lightbox video playback) -->
+  <link rel="stylesheet" href="https://vjs.zencdn.net/8.16.1/video-js.css"/>
+  <script src="https://vjs.zencdn.net/8.16.1/video.min.js"></script>
+
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -211,30 +215,66 @@
     const lbClose = document.getElementById('lbClose');
     const lbPrev = document.getElementById('lbPrev');
     const lbNext = document.getElementById('lbNext');
+    const lbVideo = document.getElementById('lbVideo');
+    let vjsPlayer = null;
 
     // A single array of items the lightbox can navigate through
     const lbItems = [];
 
-    function addLightboxItem(imgEl, src, caption) {
+    function addLightboxItem(el, src, caption, typeOverride) {
       // avoid duplicates by src
       if (lbItems.find(i => i.src === src)) return;
-      lbItems.push({ src, caption: caption || imgEl?.alt || '' });
+      const inferredType = typeOverride || (el?.dataset?.mediaType) || (el?.tagName === 'VIDEO' ? 'video' : 'image');
+      lbItems.push({ src, caption: caption || el?.alt || '', type: inferredType });
       // Click/keyboard to open
-      const opener = imgEl?.closest('[role="button"]') || imgEl;
+      const opener = el?.closest('[role="button"]') || el;
       opener?.addEventListener('click', (e) => { e.preventDefault(); openLightboxBySrc(src); });
       opener?.addEventListener('keydown', (e) => {
         if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openLightboxBySrc(src); }
       });
       if (opener && opener.tabIndex < 0) opener.tabIndex = 0;
-      if (opener && !opener.getAttribute('aria-label')) opener.setAttribute('aria-label', 'Open image');
+      if (opener && !opener.getAttribute('aria-label')) opener.setAttribute('aria-label', 'Open media');
     }
 
     let currentIndex = 0;
 
+    function disposePlayer() {
+      if (vjsPlayer) {
+        try { vjsPlayer.pause(); vjsPlayer.dispose(); } catch (_) {}
+        vjsPlayer = null;
+      }
+    }
+
     function renderCurrent() {
       const item = lbItems[currentIndex];
       if (!item) return;
-      lbImg.src = item.src;
+      const isVideo = item.type === 'video';
+      if (isVideo) {
+        // Hide image, show video
+        if (lbImg) lbImg.classList.add('hidden');
+        if (lbVideo) lbVideo.classList.remove('hidden');
+        // Initialize or update player
+        if (lbVideo) {
+          if (!vjsPlayer) {
+            vjsPlayer = window.videojs ? window.videojs(lbVideo, { controls: true, preload: 'auto', playsinline: true }) : null;
+          }
+          if (vjsPlayer) {
+            vjsPlayer.src({ src: item.src, type: 'video/webm' });
+            // Do not autoplay with sound; user can choose to play
+          } else {
+            // fallback without video.js
+            lbVideo.src = item.src;
+          }
+        }
+      } else {
+        // Image mode
+        disposePlayer();
+        if (lbVideo) lbVideo.classList.add('hidden');
+        if (lbImg) {
+          lbImg.src = item.src;
+          lbImg.classList.remove('hidden');
+        }
+      }
       if (lbCaption) {
         lbCaption.textContent = item.caption || '';
         lbCaption.parentElement?.classList.toggle('hidden', !item.caption);
@@ -257,7 +297,11 @@
       openLightboxByIndex(idx >= 0 ? idx : 0);
     }
 
-    function closeLightbox() { lightbox?.classList.add('hidden'); document.body.style.overflow = ''; }
+    function closeLightbox() { 
+      disposePlayer();
+      lightbox?.classList.add('hidden'); 
+      document.body.style.overflow = ''; 
+    }
     function showIndex(i) { openLightboxByIndex(i); }
 
     lbClose?.addEventListener('click', closeLightbox);
@@ -287,6 +331,26 @@
         galleryGrid.appendChild(figure);
         addLightboxItem(img, src, img.getAttribute('data-caption') || img.alt);
       }
+
+      // Append three video items as gallery thumbnails (muted previews)
+      const videos = [
+        { src: 'assets/videos/receiving.webm', caption: 'Receiving — inbound sample handling (Samplify)', label: 'Open video: Receiving' },
+        { src: 'assets/videos/searching.webm', caption: 'Searching — locating samples with traceability (Samplify)', label: 'Open video: Searching' },
+        { src: 'assets/videos/sending.webm', caption: 'Sending — outbound dispatch workflow (Samplify)', label: 'Open video: Sending' }
+      ];
+      for (const v of videos) {
+        const figure = document.createElement('figure');
+        figure.className = 'masonry-item relative overflow-hidden rounded-xl bg-slate-100';
+        figure.tabIndex = 0; figure.setAttribute('role', 'button'); figure.setAttribute('aria-label', v.label);
+        const vid = document.createElement('video');
+        vid.src = v.src; vid.muted = true; vid.loop = true; vid.playsInline = true; vid.autoplay = true;
+        vid.setAttribute('aria-label', v.label);
+        vid.className = 'w-full h-auto block';
+        figure.appendChild(vid);
+        galleryGrid.appendChild(figure);
+        addLightboxItem(vid, v.src, v.caption, 'video');
+      }
+
       document.getElementById('viewAllBtn')?.addEventListener('click', () => {
         if (lbItems.length) openLightboxByIndex(0);
       });
