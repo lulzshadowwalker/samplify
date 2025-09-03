@@ -1,0 +1,594 @@
+---
+layout: layouts/base.njk
+title: Gallery — Samplify | Medical Sample Logistics Technology Showcase
+description: Explore Samplify's medical sample logistics technology through our comprehensive gallery featuring devices, RFID systems, software interfaces, and operational workflows.
+ogTitle: Samplify Gallery — Medical Logistics Technology in Action
+ogDescription: Visual showcase of Samplify's advanced medical sample logistics solutions, featuring smart devices, RFID-enabled racks, and software platforms.
+---
+
+<!-- Hero Section -->
+<section class="relative isolate overflow-hidden bg-gradient-to-b from-skybrand-300 via-skybrand-500 to-deepblue-900 py-16 sm:py-20">
+  <div class="absolute inset-0 -z-10 opacity-20">
+    <svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" viewBox="0 0 800 600" class="h-full w-full">
+      <defs>
+        <linearGradient id="g" x1="0" x2="1" y1="0" y2="1">
+          <stop stop-color="#ffffff" stop-opacity="0.3" offset="0"/>
+          <stop stop-color="#87CEEB" stop-opacity="0.2" offset="1"/>
+        </linearGradient>
+      </defs>
+      <g fill="url(#g)">
+        <circle cx="120" cy="140" r="60"/>
+        <rect x="520" y="100" width="180" height="120" rx="12"/>
+        <circle cx="650" cy="420" r="70"/>
+        <rect x="80" y="350" width="140" height="100" rx="12"/>
+      </g>
+    </svg>
+  </div>
+  
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
+    <div class="reveal">
+      <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight">Technology Gallery</h1>
+      <p class="mt-6 text-lg sm:text-xl text-white/90 max-w-3xl mx-auto">
+        Explore our innovative medical sample logistics solutions in action. 
+        Discover the technology that's transforming healthcare logistics across the Middle East.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Gallery Categories -->
+<section class="py-16 sm:py-20 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12 reveal">
+      <h2 class="text-2xl sm:text-3xl font-bold text-deepblue-900">Visual Technology Showcase</h2>
+      <p class="mt-3 text-slate-600">
+        From smart devices to software interfaces, see how Samplify technology works in real healthcare environments
+      </p>
+    </div>
+    
+    <!-- Filter Tabs -->
+    <div class="flex flex-wrap justify-center gap-4 mb-12 reveal">
+      <button id="filter-all" class="filter-btn active px-6 py-3 rounded-xl font-medium transition focus-ring" data-filter="all">All Media</button>
+      <button id="filter-devices" class="filter-btn px-6 py-3 rounded-xl font-medium transition focus-ring" data-filter="devices">Smart Devices</button>
+      <button id="filter-software" class="filter-btn px-6 py-3 rounded-xl font-medium transition focus-ring" data-filter="software">Software Platform</button>
+      <button id="filter-workflows" class="filter-btn px-6 py-3 rounded-xl font-medium transition focus-ring" data-filter="workflows">Operational Workflows</button>
+    </div>
+    
+    <!-- Gallery Grid -->
+    <div class="masonry" id="galleryGrid" aria-live="polite">
+      <!-- Gallery items will be populated by JavaScript -->
+    </div>
+    
+    <!-- Load More Button -->
+    <div class="text-center mt-8">
+      <button id="loadMoreBtn" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl border border-slate-300 text-deepblue-900 hover:bg-slate-50 transition focus-ring hidden">
+        <i class="fa-solid fa-plus"></i>
+        Load More Images
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- Technology Overview -->
+<section class="py-16 sm:py-20 bg-slate-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid md:grid-cols-3 gap-8">
+      <!-- Device Showcase -->
+      <article class="reveal rounded-2xl bg-white p-8 border border-slate-200 shadow-lg">
+        <div class="h-16 w-16 rounded-2xl bg-gradient-to-br from-skybrand-300 to-skybrand-500 text-white flex items-center justify-center shadow-glow mb-6 mx-auto">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-8 w-8">
+            <path d="M12 2a10 10 0 100 20 10 10 0 000-20zm1 5v5l4 2-.75 1.23L11 12V7h2z"/>
+          </svg>
+        </div>
+        <h3 class="text-xl font-semibold text-deepblue-900 text-center mb-4">Smart Transport Devices</h3>
+        <p class="text-slate-600 text-center leading-relaxed mb-6">
+          Advanced hardware designed for medical sample logistics with real-time monitoring, 
+          GPS tracking, and temperature control capabilities.
+        </p>
+        <div class="space-y-3 text-sm">
+          <div class="flex justify-between items-center">
+            <span class="text-slate-600">GPS Accuracy:</span>
+            <span class="font-medium text-deepblue-900">±2 meters</span>
+          </div>
+          <div class="flex justify-between items-center">
+            <span class="text-slate-600">Temperature Range:</span>
+            <span class="font-medium text-deepblue-900">-20°C to +60°C</span>
+          </div>
+          <div class="flex justify-between items-center">
+            <span class="text-slate-600">Battery Life:</span>
+            <span class="font-medium text-deepblue-900">72+ hours</span>
+          </div>
+          <div class="flex justify-between items-center">
+            <span class="text-slate-600">Sample Capacity:</span>
+            <span class="font-medium text-deepblue-900">48 samples</span>
+          </div>
+        </div>
+      </article>
+      
+      <!-- RFID System Showcase -->
+      <article class="reveal rounded-2xl bg-white p-8 border border-slate-200 shadow-lg">
+        <div class="h-16 w-16 rounded-2xl bg-gradient-to-br from-skybrand-300 to-skybrand-500 text-white flex items-center justify-center shadow-glow mb-6 mx-auto">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-8 w-8">
+            <path d="M4 4h16v6H4V4zm0 10h16v6H4v-6zm2 2h12v2H6v-2z"/>
+          </svg>
+        </div>
+        <h3 class="text-xl font-semibold text-deepblue-900 text-center mb-4">RFID-Enabled Systems</h3>
+        <p class="text-slate-600 text-center leading-relaxed mb-6">
+          Intelligent identification and sorting systems that eliminate manual errors 
+          and provide automated sample management throughout the logistics process.
+        </p>
+        <div class="space-y-3 text-sm">
+          <div class="flex justify-between items-center">
+            <span class="text-slate-600">Read Range:</span>
+            <span class="font-medium text-deepblue-900">Up to 1 meter</span>
+          </div>
+          <div class="flex justify-between items-center">
+            <span class="text-slate-600">Read Speed:</span>
+            <span class="font-medium text-deepblue-900">Multiple tags/sec</span>
+          </div>
+          <div class="flex justify-between items-centers">
+            <span class="text-slate-600">Standards:</span>
+            <span class="font-medium text-deepblue-900">ISO 15693/14443</span>
+          </div>
+          <div class="flex justify-between items-center">
+            <span class="text-slate-600">Data Storage:</span>
+            <span class="font-medium text-deepblue-900">8KB per tag</span>
+          </div>
+        </div>
+      </article>
+      
+      <!-- Software Platform Showcase -->
+      <article class="reveal rounded-2xl bg-white p-8 border border-slate-200 shadow-lg">
+        <div class="h-16 w-16 rounded-2xl bg-gradient-to-br from-skybrand-300 to-skybrand-500 text-white flex items-center justify-center shadow-glow mb-6 mx-auto">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-8 w-8">
+            <path d="M3 4h18v2H3V4zm0 7h12v2H3v-2zm0 7h18v2H3v-2z"/>
+          </svg>
+        </div>
+        <h3 class="text-xl font-semibold text-deepblue-900 text-center mb-4">Software Platform</h3>
+        <p class="text-slate-600 text-center leading-relaxed mb-6">
+          Comprehensive management interface providing real-time visibility, analytics, 
+          and seamless integration with existing healthcare information systems.
+        </p>
+        <div class="space-y-3 text-sm">
+          <div class="flex justify-between items-center">
+            <span class="text-slate-600">Deployment:</span>
+            <span class="font-medium text-deepblue-900">Cloud/On-premise</span>
+          </div>
+          <div class="flex justify-between items-center">
+            <span class="text-slate-600">API Support:</span>
+            <span class="font-medium text-deepblue-900">RESTful/SOAP</span>
+          </div>
+          <div class="flex justify-between items-center">
+            <span class="text-slate-600">Standards:</span>
+            <span class="font-medium text-deepblue-900">HL7/FHIR/LIS</span>
+          </div>
+          <div class="flex justify-between items-center">
+            <span class="text-slate-600">Security:</span>
+            <span class="font-medium text-deepblue-900">AES-256 encryption</span>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- Process Workflows -->
+<section class="py-16 sm:py-20 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12 reveal">
+      <h2 class="text-2xl sm:text-3xl font-bold text-deepblue-900">Operational Workflows</h2>
+      <p class="mt-3 text-slate-600">
+        See how our integrated solution streamlines medical sample logistics from collection to delivery
+      </p>
+    </div>
+    
+    <div class="grid lg:grid-cols-3 gap-8">
+      <!-- Receiving Workflow -->
+      <article class="reveal group">
+        <div class="relative overflow-hidden rounded-2xl bg-slate-100 mb-6">
+          <div class="aspect-video">
+            <video 
+              class="w-full h-full object-cover cursor-pointer group-hover:scale-105 transition duration-500" 
+              muted 
+              loop 
+              autoplay 
+              playsInline
+              data-lightbox="workflows"
+              data-caption="Receiving Workflow — Automated inbound sample handling with RFID identification and system integration"
+              tabindex="0"
+              role="button"
+              aria-label="Open video: Receiving workflow demonstration">
+              <source src="assets/videos/receiving.webm" type="video/webm">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <div class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition duration-500 flex items-center justify-center">
+            <div class="opacity-0 group-hover:opacity-100 transition duration-300 bg-white/90 rounded-full p-3">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-8 w-8 text-deepblue-900">
+                <path d="M8 5v14l11-7L8 5z"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+        <h3 class="text-xl font-semibold text-deepblue-900 mb-3">Sample Receiving</h3>
+        <p class="text-slate-600 leading-relaxed">
+          Automated inbound sample handling with RFID identification, real-time inventory updates, 
+          and seamless integration with laboratory information systems for immediate processing workflow initiation.
+        </p>
+      </article>
+      
+      <!-- Searching Workflow -->
+      <article class="reveal group">
+        <div class="relative overflow-hidden rounded-2xl bg-slate-100 mb-6">
+          <div class="aspect-video">
+            <video 
+              class="w-full h-full object-cover cursor-pointer group-hover:scale-105 transition duration-500" 
+              muted 
+              loop 
+              autoplay 
+              playsInline
+              data-lightbox="workflows"
+              data-caption="Searching Workflow — Real-time sample location and tracking with comprehensive audit trails"
+              tabindex="0"
+              role="button"
+              aria-label="Open video: Searching workflow demonstration">
+              <source src="assets/videos/searching.webm" type="video/webm">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <div class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition duration-500 flex items-center justify-center">
+            <div class="opacity-0 group-hover:opacity-100 transition duration-300 bg-white/90 rounded-full p-3">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-8 w-8 text-deepblue-900">
+                <path d="M8 5v14l11-7L8 5z"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+        <h3 class="text-xl font-semibold text-deepblue-900 mb-3">Sample Tracking</h3>
+        <p class="text-slate-600 leading-relaxed">
+          Real-time sample location and status tracking with powerful search capabilities, 
+          temperature history, and comprehensive audit trails for complete traceability throughout the logistics chain.
+        </p>
+      </article>
+      
+      <!-- Sending Workflow -->
+      <article class="reveal group">
+        <div class="relative overflow-hidden rounded-2xl bg-slate-100 mb-6">
+          <div class="aspect-video">
+            <video 
+              class="w-full h-full object-cover cursor-pointer group-hover:scale-105 transition duration-500" 
+              muted 
+              loop 
+              autoplay 
+              playsInline
+              data-lightbox="workflows"
+              data-caption="Sending Workflow — Automated outbound dispatch with GPS tracking and delivery confirmation"
+              tabindex="0"
+              role="button"
+              aria-label="Open video: Sending workflow demonstration">
+              <source src="assets/videos/sending.webm" type="video/webm">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <div class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition duration-500 flex items-center justify-center">
+            <div class="opacity-0 group-hover:opacity-100 transition duration-300 bg-white/90 rounded-full p-3">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-8 w-8 text-deepblue-900">
+                <path d="M8 5v14l11-7L8 5z"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+        <h3 class="text-xl font-semibold text-deepblue-900 mb-3">Sample Dispatch</h3>
+        <p class="text-slate-600 leading-relaxed">
+          Automated outbound dispatch workflow with smart routing, GPS tracking, temperature monitoring, 
+          and automated delivery confirmation with complete chain of custody documentation.
+        </p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- Technical Specifications -->
+<section class="py-16 sm:py-20 bg-slate-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12 reveal">
+      <h2 class="text-2xl sm:text-3xl font-bold text-deepblue-900">Technical Excellence</h2>
+      <p class="mt-3 text-slate-600">
+        Enterprise-grade technology specifications designed for demanding healthcare environments
+      </p>
+    </div>
+    
+    <div class="grid lg:grid-cols-2 gap-12">
+      <div class="reveal">
+        <h3 class="text-xl font-semibold text-deepblue-900 mb-6">Performance Metrics</h3>
+        <div class="space-y-6">
+          <div class="flex items-center gap-4">
+            <div class="h-16 w-16 rounded-2xl bg-gradient-to-br from-skybrand-300 to-skybrand-500 text-white flex items-center justify-center shadow-glow">
+              <span class="text-lg font-bold">99.9%</span>
+            </div>
+            <div>
+              <div class="font-semibold text-deepblue-900">System Uptime</div>
+              <div class="text-sm text-slate-600">Guaranteed availability with redundant systems</div>
+            </div>
+          </div>
+          
+          <div class="flex items-center gap-4">
+            <div class="h-16 w-16 rounded-2xl bg-gradient-to-br from-skybrand-300 to-skybrand-500 text-white flex items-center justify-center shadow-glow">
+              <span class="text-lg font-bold">±2m</span>
+            </div>
+            <div>
+              <div class="font-semibold text-deepblue-900">GPS Precision</div>
+              <div class="text-sm text-slate-600">High-accuracy location tracking</div>
+            </div>
+          </div>
+          
+          <div class="flex items-center gap-4">
+            <div class="h-16 w-16 rounded-2xl bg-gradient-to-br from-skybrand-300 to-skybrand-500 text-white flex items-center justify-center shadow-glow">
+              <span class="text-lg font-bold">±0.5°C</span>
+            </div>
+            <div>
+              <div class="font-semibold text-deepblue-900">Temperature Accuracy</div>
+              <div class="text-sm text-slate-600">Precise environmental monitoring</div>
+            </div>
+          </div>
+          
+          <div class="flex items-center gap-4">
+            <div class="h-16 w-16 rounded-2xl bg-gradient-to-br from-skybrand-300 to-skybrand-500 text-white flex items-center justify-center shadow-glow">
+              <span class="text-lg font-bold">24/7</span>
+            </div>
+            <div>
+              <div class="font-semibold text-deepblue-900">Monitoring</div>
+              <div class="text-sm text-slate-600">Continuous system oversight and support</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="reveal">
+        <h3 class="text-xl font-semibold text-deepblue-900 mb-6">Security & Compliance</h3>
+        <div class="space-y-4">
+          <div class="p-4 rounded-2xl bg-white border border-slate-200">
+            <div class="flex items-center gap-3 mb-2">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-6 w-6 text-skybrand-500">
+                <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/>
+              </svg>
+              <span class="font-medium text-deepblue-900">AES-256 Encryption</span>
+            </div>
+            <p class="text-sm text-slate-600">Military-grade encryption for all data transmission and storage</p>
+          </div>
+          
+          <div class="p-4 rounded-2xl bg-white border border-slate-200">
+            <div class="flex items-center gap-3 mb-2">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-6 w-6 text-skybrand-500">
+                <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
+              <span class="font-medium text-deepblue-900">HIPAA Compliant</span>
+            </div>
+            <p class="text-sm text-slate-600">Full compliance with healthcare data protection standards</p>
+          </div>
+          
+          <div class="p-4 rounded-2xl bg-white border border-slate-200">
+            <div class="flex items-center gap-3 mb-2">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-6 w-6 text-skybrand-500">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+              </svg>
+              <span class="font-medium text-deepblue-900">ISO 13485 Certified</span>
+            </div>
+            <p class="text-sm text-slate-600">Medical device quality management system compliance</p>
+          </div>
+          
+          <div class="p-4 rounded-2xl bg-white border border-slate-200">
+            <div class="flex items-center gap-3 mb-2">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-6 w-6 text-skybrand-500">
+                <path d="M4 4h16v6H4V4zm0 10h16v6H4v-6zm2 2h12v2H6v-2z"/>
+              </svg>
+              <span class="font-medium text-deepblue-900">Role-Based Access</span>
+            </div>
+            <p class="text-sm text-slate-600">Granular user permissions and audit logging</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Section -->
+<section class="py-16 bg-gradient-to-r from-skybrand-300 to-skybrand-500">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
+    <div class="reveal">
+      <h2 class="text-2xl sm:text-3xl font-bold mb-6">See Samplify in Action</h2>
+      <p class="text-lg text-white/90 max-w-2xl mx-auto mb-8">
+        Ready to experience how our technology can transform your medical sample logistics? 
+        Schedule a personalized demonstration with our team.
+      </p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href="/contact" data-demo="true" class="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-white text-deepblue-900 font-medium hover:shadow-lg hover:-translate-y-0.5 transition focus-ring">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5">
+            <path d="M12 2a10 10 0 100 20 10 10 0 000-20zm1 5v5l4 2-.75 1.23L11 12V7h2z"/>
+          </svg>
+          Request Live Demo
+        </a>
+        <a href="/solutions" class="inline-flex items-center gap-2 px-8 py-4 rounded-xl border border-white/70 text-white hover:bg-white/10 transition focus-ring">
+          Explore Solutions
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Lightbox Modal -->
+<div id="lightbox" class="fixed inset-0 z-50 hidden" role="dialog" aria-modal="true" aria-label="Media viewer">
+  <div class="absolute inset-0 bg-black/80"></div>
+  <div class="relative h-full w-full flex items-center justify-center px-4">
+    <button id="lbClose" class="absolute top-4 right-4 p-2 rounded-lg bg-white/10 text-white hover:bg-white/20 focus-ring" aria-label="Close viewer">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+      </svg>
+    </button>
+    <button id="lbPrev" class="absolute left-2 sm:left-6 p-2 rounded-lg bg-white/10 text-white hover:bg-white/20 focus-ring" aria-label="Previous media">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
+      </svg>
+    </button>
+    <div class="flex flex-col items-center gap-3 text-white text-sm max-w-[92vw]">
+      <!-- Image container -->
+      <img id="lbImage" alt="Gallery image" class="max-h-[85vh] max-w-full rounded-lg shadow-2xl"/>
+      <!-- Video container (video.js player) -->
+      <video id="lbVideo" class="video-js vjs-big-play-centered rounded-lg shadow-2xl max-h-[85vh] max-w-full hidden" controls preload="auto" playsinline></video>
+      <figcaption id="lbCaption" class="opacity-90 text-center max-w-2xl"></figcaption>
+    </div>
+    <button id="lbNext" class="absolute right-2 sm:right-6 p-2 rounded-lg bg-white/10 text-white hover:bg-white/20 focus-ring" aria-label="Next media">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M8.59 16.59L10 18l6-6-6-6-1.41 1.41L13.17 12z"/>
+      </svg>
+    </button>
+  </div>
+</div>
+
+<style>
+  /* Filter buttons */
+  .filter-btn {
+    background: white;
+    color: #64748b;
+    border: 1px solid #e2e8f0;
+  }
+  
+  .filter-btn:hover,
+  .filter-btn.active {
+    background: linear-gradient(135deg, #87CEEB, #0ea5e9);
+    color: white;
+    border-color: #0ea5e9;
+    box-shadow: 0 10px 30px -10px rgba(14,165,233,0.5);
+  }
+</style>
+
+<script>
+  // Gallery filter functionality and enhanced lightbox
+  document.addEventListener('DOMContentLoaded', function() {
+    const galleryGrid = document.getElementById('galleryGrid');
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const loadMoreBtn = document.getElementById('loadMoreBtn');
+    
+    // Gallery data with categories
+    const galleryData = [
+      // Gallery images (devices category)
+      ...Array.from({ length: 21 }, (_, i) => ({
+        src: `assets/gallery/gallery-${i + 1}.webp`,
+        caption: `Samplify Technology Showcase ${i + 1}`,
+        category: 'devices',
+        type: 'image'
+      })),
+      // Workflow videos
+      {
+        src: 'assets/videos/receiving.webm',
+        caption: 'Receiving Workflow — Automated inbound sample handling with RFID identification and system integration',
+        category: 'workflows',
+        type: 'video'
+      },
+      {
+        src: 'assets/videos/searching.webm',
+        caption: 'Searching Workflow — Real-time sample location and tracking with comprehensive audit trails',
+        category: 'workflows',
+        type: 'video'
+      },
+      {
+        src: 'assets/videos/sending.webm',
+        caption: 'Sending Workflow — Automated outbound dispatch with GPS tracking and delivery confirmation',
+        category: 'workflows',
+        type: 'video'
+      }
+    ];
+    
+    let visibleCount = 12;
+    let currentFilter = 'all';
+    
+    function renderGallery() {
+      if (!galleryGrid) return;
+      
+      galleryGrid.innerHTML = '';
+      const filteredData = currentFilter === 'all' ? galleryData : galleryData.filter(item => item.category === currentFilter);
+      const itemsToShow = filteredData.slice(0, visibleCount);
+      
+      itemsToShow.forEach((item, index) => {
+        const figure = document.createElement('figure');
+        figure.className = 'masonry-item relative overflow-hidden rounded-xl bg-slate-100 cursor-pointer hover:shadow-lg transition group';
+        figure.tabIndex = 0;
+        figure.setAttribute('role', 'button');
+        figure.setAttribute('aria-label', `Open ${item.type}: ${item.caption}`);
+        
+        if (item.type === 'video') {
+          const video = document.createElement('video');
+          video.src = item.src;
+          video.muted = true;
+          video.loop = true;
+          video.playsInline = true;
+          video.autoplay = true;
+          video.className = 'w-full h-auto block group-hover:scale-105 transition duration-500';
+          
+          // Add play icon overlay
+          const overlay = document.createElement('div');
+          overlay.className = 'absolute inset-0 bg-black/0 group-hover:bg-black/10 transition duration-500 flex items-center justify-center';
+          const playIcon = document.createElement('div');
+          playIcon.className = 'opacity-0 group-hover:opacity-100 transition duration-300 bg-white/90 rounded-full p-3';
+          playIcon.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-8 w-8 text-deepblue-900"><path d="M8 5v14l11-7L8 5z"/></svg>';
+          overlay.appendChild(playIcon);
+          
+          figure.appendChild(video);
+          figure.appendChild(overlay);
+        } else {
+          const img = document.createElement('img');
+          img.src = item.src;
+          img.alt = item.caption;
+          img.loading = 'lazy';
+          img.className = 'w-full h-auto block group-hover:scale-105 transition duration-500';
+          img.style.opacity = '0';
+          figure.classList.add('skeleton');
+          
+          img.addEventListener('load', () => {
+            img.style.opacity = '1';
+            figure.classList.remove('skeleton');
+          });
+          
+          figure.appendChild(img);
+        }
+        
+        // Add to lightbox system
+        addLightboxItem(figure, item.src, item.caption, item.type);
+        galleryGrid.appendChild(figure);
+      });
+      
+      // Show/hide load more button
+      if (loadMoreBtn) {
+        loadMoreBtn.classList.toggle('hidden', itemsToShow.length >= filteredData.length);
+      }
+    }
+    
+    // Filter functionality
+    filterButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        // Update active state
+        filterButtons.forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
+        
+        // Update filter and reset visible count
+        currentFilter = button.getAttribute('data-filter');
+        visibleCount = 12;
+        renderGallery();
+      });
+    });
+    
+    // Load more functionality
+    if (loadMoreBtn) {
+      loadMoreBtn.addEventListener('click', () => {
+        visibleCount += 12;
+        renderGallery();
+      });
+    }
+    
+    // Initial render
+    renderGallery();
+  });
+</script>
