@@ -1,6 +1,6 @@
 /* TEAM */
 Samplify — Medical Sample Logistics
-Website: https://samplify.lulzie.online
+Website: https://samplify.net
 Contact: lulzshadowwalker@gmail.com
 Developer: lulzshadowwalker@gmail.com
 
