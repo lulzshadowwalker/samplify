@@ -1,11 +1,13 @@
 ---
-layout: layouts/base.njk
 title: About Us — Samplify | Saudi Medical Sample Logistics
 description: Learn about Samplify, a Saudi Arabia-based company providing medical sample logistics solutions with real-time tracking and temperature monitoring.
 ogTitle: About Samplify — Medical Sample Logistics Solutions
 ogDescription: Discover Samplify's medical sample logistics solutions designed for healthcare organizations in Saudi Arabia and the Middle East.
 ---
 
+{% extends "layouts/base.njk" %}
+
+{% block content %}
 <!-- Hero Section -->
 <section class="relative isolate overflow-hidden bg-gradient-to-b from-skybrand-300 via-skybrand-500 to-deepblue-900 py-16 sm:py-20">
   <div class="absolute inset-0 -z-10 opacity-20">
@@ -325,3 +327,4 @@ ogDescription: Discover Samplify's medical sample logistics solutions designed f
     </div>
   </div>
 </section>
+{% endblock %}

@@ -142,11 +142,15 @@
     .toast-error { border-color: rgba(239,68,68,.5); box-shadow: 0 10px 20px -10px rgba(239,68,68,.4); }
     @keyframes toast-in { from { transform: translateY(6px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
   </style>
+
+  {% block styles %}
+  {% endblock %}
 </head>
 <body class="min-h-screen bg-white text-slate-800 selection:bg-skybrand-500/20 selection:text-deepblue-900">
   {% include "header.njk" %}
   <main id="home">
-    {{ content | safe }}
+    {% block content %}
+    {% endblock %}
   </main>
   {% include "footer.njk" %}
 
@@ -503,5 +507,8 @@
       }, { once: true });
     });
   </script>
+
+  {% block scripts %}
+  {% endblock %}
 </body>
 </html>

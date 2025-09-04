@@ -1,11 +1,13 @@
 ---
-layout: layouts/base.njk
 title: Gallery — Samplify | Medical Sample Logistics Technology Showcase
 description: Explore Samplify's medical sample logistics technology through our comprehensive gallery featuring devices, RFID systems, software interfaces, and operational workflows.
 ogTitle: Samplify Gallery — Medical Logistics Technology in Action
 ogDescription: Visual showcase of Samplify's advanced medical sample logistics solutions, featuring smart devices, RFID-enabled racks, and software platforms.
 ---
 
+{% extends "layouts/base.njk" %}
+
+{% block content %}
 <!-- Hero Section -->
 <section class="relative isolate overflow-hidden bg-gradient-to-b from-skybrand-300 via-skybrand-500 to-deepblue-900 py-16 sm:py-20">
   <div class="absolute inset-0 -z-10 opacity-20">
@@ -314,7 +316,9 @@ ogDescription: Visual showcase of Samplify's advanced medical sample logistics s
     </div>
   </div>
 </section>
+{% endblock %}
 
+{% block styles %}
 <style>
   /* Filter buttons */
   .filter-btn {
@@ -331,7 +335,9 @@ ogDescription: Visual showcase of Samplify's advanced medical sample logistics s
     box-shadow: 0 10px 30px -10px rgba(14,165,233,0.5);
   }
 </style>
+{% endblock %}
 
+{% block scripts %}
 <script>
   // Gallery filter functionality and enhanced lightbox
   // Wait for the window to fully load to ensure lightbox system is available
@@ -504,3 +510,4 @@ ogDescription: Visual showcase of Samplify's advanced medical sample logistics s
     }, 500);
   });
 </script>
+{% endblock %}

@@ -1,11 +1,13 @@
 ---
-layout: layouts/base.njk
 title: Solutions — Samplify | Medical Sample Logistics Technology
 description: Discover Samplify's comprehensive medical sample logistics solutions featuring smart devices, RFID-enabled racks, and real-time tracking software for hospitals, laboratories, and medical companies.
 ogTitle: Samplify Solutions — Smart Medical Sample Logistics
 ogDescription: Advanced medical sample logistics technology with real-time tracking, temperature monitoring, and seamless LIS/TMS integration for enhanced patient safety.
 ---
 
+{% extends "layouts/base.njk" %}
+
+{% block content %}
 <!-- Hero Section -->
 <section class="relative isolate overflow-hidden bg-gradient-to-b from-skybrand-300 via-skybrand-500 to-deepblue-900 py-16 sm:py-20">
   <div class="absolute inset-0 -z-10 opacity-20">
@@ -463,3 +465,4 @@ ogDescription: Advanced medical sample logistics technology with real-time track
     </div>
   </div>
 </section>
+{% endblock %}
