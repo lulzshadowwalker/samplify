@@ -5,10 +5,16 @@
   "description": "Samplify static site built with Eleventy",
   "scripts": {
     "dev": "eleventy --serve",
-    "build": "eleventy",
+    "build:css": "npx tailwindcss -i ./src/app.css -o ./assets/style.css --minify",
+    "build:eleventy": "eleventy",
+    "build": "npm run build:css && npm run build:eleventy",
     "start": "npm run build && npx serve _site"
   },
   "devDependencies": {
     "@11ty/eleventy": "^3.0.0"
+  },
+  "dependencies": {
+    "@tailwindcss/cli": "^4.1.12",
+    "tailwindcss": "^4.1.12"
   }
 }

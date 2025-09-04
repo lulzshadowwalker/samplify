@@ -1,0 +1,34 @@
+@import "tailwindcss";
+
+@theme {
+  /* skybrand */
+  --color-skybrand: oklch(68.469% 0.14787 237.32);
+  --color-skybrand-50: oklch(98.443% 0.00753 228.85);
+  --color-skybrand-100: oklch(94.761% 0.02843 228.05);
+  --color-skybrand-200: oklch(87.584% 0.06913 227.4);
+  --color-skybrand-300: oklch(80.674% 0.10517 229.01);
+  --color-skybrand-400: oklch(74.517% 0.13468 232.7);
+  --color-skybrand-500: oklch(68.469% 0.14787 237.32);
+  --color-skybrand-600: oklch(57.811% 0.12355 236.91);
+  --color-skybrand-700: oklch(46.638% 0.09793 236.23);
+  --color-skybrand-800: oklch(34.742% 0.07055 234.87);
+  --color-skybrand-900: oklch(21.682% 0.04056 230.49);
+  --color-skybrand-950: oklch(14.401% 0.02373 222.38);
+
+  /* deepblue */
+  --color-deepblue: oklch(55.439% 0.04072 257.42);
+  --color-deepblue-50: oklch(96.995% 0.00287 264.54);
+  --color-deepblue-100: oklch(92.711% 0.00749 260.73);
+  --color-deepblue-200: oklch(83.659% 0.01593 257.2);
+  --color-deepblue-300: oklch(74.484% 0.02566 259.82);
+  --color-deepblue-400: oklch(64.934% 0.03538 258.37);
+  --color-deepblue-500: oklch(55.439% 0.04072 257.42);
+  --color-deepblue-600: oklch(46.781% 0.03295 258.36);
+  --color-deepblue-700: oklch(37.662% 0.02686 259.16);
+  --color-deepblue-800: oklch(28.257% 0.01705 255.66);
+  --color-deepblue-900: oklch(17.677% 0.00699 258.37);
+  --color-deepblue-950: oklch(11.367% 0.00435 245);
+
+  /* Custom box shadow */
+  --shadow-glow: 0 10px 30px -10px oklch(0.71 0.23 236 / 0.5);
+}
