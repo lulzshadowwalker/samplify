@@ -5,7 +5,8 @@
   "description": "Samplify static site built with Eleventy",
   "scripts": {
     "dev": "eleventy --serve",
-    "build": "eleventy"
+    "build": "eleventy",
+    "start": "npm run build && npx serve _site"
   },
   "devDependencies": {
     "@11ty/eleventy": "^3.0.0"
