@@ -7,6 +7,14 @@ ogDescription: Discover Samplify's medical sample logistics solutions designed f
 
 {% extends "layouts/base.njk" %}
 
+{% block meta %}
+  <link rel="canonical" href="https://samplify.lulzie.online/about"/>
+{% endblock %}
+
+{% block jsonld %}
+  {# No extra page-specific JSON-LD for About page, as all info is in site-wide Organization schema #}
+{% endblock %}
+
 {% block content %}
 <!-- Hero Section -->
 <section class="relative isolate overflow-hidden bg-gradient-to-b from-skybrand-300 via-skybrand-500 to-deepblue-900 py-16 sm:py-20">

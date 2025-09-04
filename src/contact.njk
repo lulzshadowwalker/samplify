@@ -7,6 +7,46 @@ ogDescription: Get in touch with Samplify's medical sample logistics experts. Sc
 
 {% extends "layouts/base.njk" %}
 
+{% block meta %}
+  <link rel="canonical" href="https://samplify.lulzie.online/contact"/>
+  <meta name="keywords" content="medical sample logistics, healthcare, contact, consultation, demo, Saudi Arabia, Middle East"/>
+{% endblock %}
+
+{% block jsonld %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How does Samplify work?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Samplify provides intelligent tracking and logistics for medical samples, using RFID and GPS technology to ensure accuracy, efficiency, and patient safety."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What industries do you serve?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We serve hospitals, clinics, medical laboratories, and logistics companies across Saudi Arabia and the Middle East."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How can I learn more about your solutions?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Contact us to schedule a demo, request information, or speak with our healthcare logistics experts."
+      }
+    }
+  ]
+}
+</script>
+{% endblock %}
+
 {% block content %}
 <!-- Hero Section -->
 <section class="relative isolate overflow-hidden bg-gradient-to-b from-skybrand-300 via-skybrand-500 to-deepblue-900 py-16 sm:py-20">

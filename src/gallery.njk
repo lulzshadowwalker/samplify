@@ -7,6 +7,28 @@ ogDescription: Visual showcase of Samplify's advanced medical sample logistics s
 
 {% extends "layouts/base.njk" %}
 
+{% block meta %}
+  <link rel="canonical" href="https://samplify.lulzie.online/gallery"/>
+  <meta name="keywords" content="medical sample logistics, technology, gallery, RFID, devices, software, workflows"/>
+{% endblock %}
+
+{% block jsonld %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "Samplify Technology Gallery",
+  "description": "Showcase of Samplify's medical sample logistics technology, including devices, RFID systems, software interfaces, and workflows.",
+  "hasPart": [
+    {"@type": "ImageObject", "contentUrl": "/assets/gallery/gallery-1.webp"},
+    {"@type": "ImageObject", "contentUrl": "/assets/gallery/gallery-2.webp"},
+    {"@type": "ImageObject", "contentUrl": "/assets/gallery/gallery-3.webp"}
+    {# ...add more images as needed, only using those visible in the gallery... #}
+  ]
+}
+</script>
+{% endblock %}
+
 {% block content %}
 <!-- Hero Section -->
 <section class="relative isolate overflow-hidden bg-gradient-to-b from-skybrand-300 via-skybrand-500 to-deepblue-900 py-16 sm:py-20">
