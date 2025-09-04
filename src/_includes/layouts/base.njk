@@ -198,8 +198,7 @@
       window.addEventListener('load', typeNext);
     }
 
-    // Unified Lightbox for gallery and any opted-in images
-    const galleryGrid = document.getElementById('galleryGrid');
+    // Unified Lightbox for images and videos
     const lightbox = document.getElementById('lightbox');
     const lbImg = document.getElementById('lbImage');
     const lbCaption = document.getElementById('lbCaption');
@@ -328,49 +327,7 @@
     window.lbItems = lbItems;
     window.openLightboxBySrc = openLightboxBySrc;
 
-    // 1) Build gallery items (if gallery exists)
-    if (galleryGrid) {
-      const galleryImages = Array.from({ length: 21 }, (_, i) => `/assets/gallery/gallery-${i + 1}.webp`);
-      const visibleCount = 9;
-      for (const src of galleryImages.slice(0, visibleCount)) {
-        const figure = document.createElement('figure');
-        figure.className = 'masonry-item relative overflow-hidden rounded-xl bg-slate-100';
-        figure.tabIndex = 0; figure.setAttribute('role', 'button'); figure.setAttribute('aria-label', 'Open image');
-        const img = document.createElement('img');
-        img.src = src; img.alt = 'Samplify gallery image'; img.loading = 'lazy';
-        img.className = 'w-full h-auto transition hover:opacity-95 cursor-zoom-in';
-        img.style.opacity = '0'; figure.classList.add('skeleton');
-        img.addEventListener('load', () => { img.style.opacity = '1'; figure.classList.remove('skeleton'); });
-        figure.appendChild(img);
-        galleryGrid.appendChild(figure);
-        addLightboxItem(img, src, img.getAttribute('data-caption') || img.alt);
-      }
-
-      // Append three video items as gallery thumbnails (muted previews)
-      const videos = [
-        { src: '/assets/videos/receiving.webm', caption: 'Receiving — inbound sample handling (Samplify)', label: 'Open video: Receiving' },
-        { src: '/assets/videos/searching.webm', caption: 'Searching — locating samples with traceability (Samplify)', label: 'Open video: Searching' },
-        { src: '/assets/videos/sending.webm', caption: 'Sending — outbound dispatch workflow (Samplify)', label: 'Open video: Sending' }
-      ];
-      for (const v of videos) {
-        const figure = document.createElement('figure');
-        figure.className = 'masonry-item relative overflow-hidden rounded-xl bg-slate-100';
-        figure.tabIndex = 0; figure.setAttribute('role', 'button'); figure.setAttribute('aria-label', v.label);
-        const vid = document.createElement('video');
-        vid.src = v.src; vid.muted = true; vid.loop = true; vid.playsInline = true; vid.autoplay = true;
-        vid.setAttribute('aria-label', v.label);
-        vid.className = 'w-full h-auto block';
-        figure.appendChild(vid);
-        galleryGrid.appendChild(figure);
-        addLightboxItem(vid, v.src, v.caption, 'video');
-      }
-
-      document.getElementById('viewAllBtn')?.addEventListener('click', () => {
-        if (lbItems.length) openLightboxByIndex(0);
-      });
-    }
-
-    // 2) Add any site-wide images that opt-in via data-lightbox
+    // Add any site-wide images that opt-in via data-lightbox
     document.querySelectorAll('img[data-lightbox]').forEach(img => {
       const src = img.getAttribute('src');
       const caption = img.getAttribute('data-caption') || img.alt || '';
@@ -381,7 +338,7 @@
       addLightboxItem(img, src, caption);
     });
 
-    // 3) Add any site-wide videos that opt-in via data-lightbox
+    // Add any site-wide videos that opt-in via data-lightbox
     // Use setTimeout to ensure this runs after gallery initialization
     setTimeout(() => {
       document.querySelectorAll('video[data-lightbox]').forEach(video => {
