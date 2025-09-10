@@ -205,7 +205,7 @@
     const lbClose = document.getElementById('lbClose');
     const lbPrev = document.getElementById('lbPrev');
     const lbNext = document.getElementById('lbNext');
-    const lbVideo = document.getElementById('lbVideo');
+    let lbVideo = document.getElementById('lbVideo'); // Use let so we can reassign when creating fresh elements
     let vjsPlayer = null;
 
     // A single array of items the lightbox can navigate through
@@ -244,8 +244,21 @@
 
     function disposePlayer() {
       if (vjsPlayer) {
-        try { vjsPlayer.pause(); vjsPlayer.dispose(); } catch (_) {}
+        try { 
+          if (typeof vjsPlayer.pause === 'function') vjsPlayer.pause();
+          if (typeof vjsPlayer.dispose === 'function') vjsPlayer.dispose(); 
+        } catch (error) {
+          console.warn('Error disposing video player:', error);
+        }
         vjsPlayer = null;
+      }
+      // Clean up any lingering Video.js artifacts from the lightbox
+      const lightboxContent = lightbox?.querySelector('div[class*="max-w-3xl"]');
+      if (lightboxContent) {
+        const vjsElements = lightboxContent.querySelectorAll('.vjs-poster, .vjs-loading-spinner, .vjs-big-play-button, .vjs-control-bar, .vjs-tech, .vjs-text-track-display');
+        vjsElements?.forEach(el => {
+          try { el.remove(); } catch (_) {}
+        });
       }
     }
 
@@ -260,20 +273,71 @@
       if (isVideo) {
         // Hide image, show video
         if (lbImg) lbImg.classList.add('hidden');
-        if (lbVideo) lbVideo.classList.remove('hidden');
-        // Initialize or update player
-        if (lbVideo) {
-          if (!vjsPlayer) {
-            vjsPlayer = window.videojs ? window.videojs(lbVideo, { controls: true, preload: 'auto', playsinline: true }) : null;
-          }
-          if (vjsPlayer) {
-            vjsPlayer.src({ src: item.src, type: 'video/webm' });
-            // Do not autoplay with sound; user can choose to play
-          } else {
+        
+        // Always dispose existing player first
+        disposePlayer();
+        
+        // Get or create the video container
+        const lightboxContent = lightbox?.querySelector('div[class*="max-w-3xl"]');
+        if (!lightboxContent) {
+          console.error('Lightbox content container not found');
+          return;
+        }
+        
+        // Remove any existing video element
+        const existingVideo = document.getElementById('lbVideo');
+        if (existingVideo) {
+          existingVideo.remove();
+        }
+        
+        // Create a completely fresh video element
+        const newVideo = document.createElement('video');
+        newVideo.id = 'lbVideo';
+        newVideo.className = 'video-js vjs-big-play-centered rounded-lg shadow-2xl max-h-[85vh] max-w-full';
+        newVideo.setAttribute('controls', 'true');
+        newVideo.setAttribute('preload', 'auto');
+        newVideo.setAttribute('playsinline', 'true');
+        
+        // Insert the new video element before the caption
+        const caption = lightboxContent.querySelector('#lbCaption');
+        if (caption) {
+          lightboxContent.insertBefore(newVideo, caption);
+        } else {
+          lightboxContent.appendChild(newVideo);
+        }
+        
+        // Update our reference
+        lbVideo = newVideo;
+        
+        // Initialize Video.js on the fresh element
+        if (window.videojs) {
+          try {
+            // Small delay to ensure DOM is ready
+            setTimeout(() => {
+              if (document.contains(lbVideo)) {
+                vjsPlayer = window.videojs(lbVideo, { 
+                  controls: true, 
+                  preload: 'auto', 
+                  playsinline: true,
+                  fluid: true,
+                  responsive: true
+                });
+                vjsPlayer.ready(() => {
+                  vjsPlayer.src({ src: item.src, type: 'video/webm' });
+                });
+              }
+            }, 50);
+          } catch (error) {
+            console.warn('Video.js initialization failed, using fallback:', error);
             // fallback without video.js
             lbVideo.src = item.src;
           }
+        } else {
+          // fallback without video.js
+          lbVideo.src = item.src;
         }
+        
+        lbVideo.classList.remove('hidden');
       } else {
         // Image mode
         disposePlayer();
@@ -307,8 +371,19 @@
 
     function closeLightbox() { 
       disposePlayer();
+      // Hide the lightbox and reset overflow
       lightbox?.classList.add('hidden'); 
       document.body.style.overflow = ''; 
+      
+      // Reset video element reference to clean state
+      const currentVideo = document.getElementById('lbVideo');
+      if (currentVideo) {
+        currentVideo.classList.add('hidden');
+        currentVideo.removeAttribute('src');
+      }
+      
+      // Reset lbVideo reference for next use
+      lbVideo = document.getElementById('lbVideo');
     }
     function showIndex(i) { openLightboxByIndex(i); }
 
@@ -349,6 +424,34 @@
         if (video.tabIndex < 0) video.tabIndex = 0;
         if (!video.getAttribute('role')) video.setAttribute('role', 'button');
         addLightboxItem(video, src, caption, 'video');
+        
+        // Also make play button overlay clickable for lightbox
+        const container = video.closest('.group');
+        if (container) {
+          const playButton = container.querySelector('svg');
+          if (playButton) {
+            const playButtonContainer = playButton.closest('div');
+            if (playButtonContainer) {
+              playButtonContainer.style.cursor = 'pointer';
+              playButtonContainer.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                openLightboxBySrc(src);
+              });
+              playButtonContainer.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  openLightboxBySrc(src);
+                }
+              });
+              if (!playButtonContainer.getAttribute('tabindex')) playButtonContainer.tabIndex = 0;
+              if (!playButtonContainer.getAttribute('aria-label')) {
+                playButtonContainer.setAttribute('aria-label', 'Play video in lightbox');
+              }
+            }
+          }
+        }
       });
     }, 100);
 

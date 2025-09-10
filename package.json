@@ -4,7 +4,7 @@
   "private": true,
   "description": "Samplify static site built with Eleventy",
   "scripts": {
-    "dev": "eleventy --serve",
+    "dev": "eleventy --serve --port 3000",
     "build:css": "npx tailwindcss -i ./src/app.css -o ./assets/style.css --minify",
     "build:eleventy": "eleventy",
     "build": "npm run build:css && npm run build:eleventy",
