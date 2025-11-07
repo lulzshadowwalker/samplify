@@ -17,7 +17,7 @@
   <meta name="twitter:title" content="{{ ogTitle or site.ogTitle }}"/>
   <meta name="twitter:description" content="{{ ogDescription or site.ogDescription }}"/>
   <meta name="twitter:image" content="{{ site.ogImage }}"/>
-  
+
   {% block meta %}
   {% endblock %}
 
@@ -28,7 +28,7 @@
     "name": "{{ site.name }}",
     "slogan": "Simplify the Process. Amplify the Precision.",
     "description": "Samplify is a Saudi-born health tech company redefining medical sample logistics in line with Vision 2030. We design and manufacture innovative solutions that ensure samples are transported with accuracy, efficiency, and full traceability. Our technology delivers real-time location and temperature tracking, digital integration with various LIS and TMS systems, automated sorting, helps improve compliance and strengthen patient care by empowering hospitals, laboratories, and logistics providers to safeguard sample integrity.",
-    "email": "businessdevelopment@samplify.net",
+    "email": "BD@samplify.net",
     "logo": "assets/logo.webp",
     "address": {
       "@type": "PostalAddress",
@@ -43,8 +43,8 @@
     "contactPoint": [
       {
         "@type": "ContactPoint",
-        "email": "businessdevelopment@samplify.net",
-        "telephone": "+966554797479",
+        "email": "BD@samplify.net",
+        "telephone": "+966533038526",
         "contactType": "customer support"
       }
     ]
@@ -111,8 +111,8 @@
       <i class="fas fa-times text-2xl"></i>
     </button>
     <div class="relative max-w-3xl w-full mx-auto p-4 flex flex-col items-center justify-center">
-      <img id="lbImage" alt="Gallery image" class="max-h-[85vh] max-w-full rounded-lg shadow-2xl hidden"/>
-      <video id="lbVideo" class="video-js vjs-big-play-centered rounded-lg shadow-2xl max-h-[85vh] max-w-full hidden" controls preload="auto" playsinline></video>
+      <img id="lbImage" alt="Gallery image" class="max-h-[85vh] max-w-full rounded-lg hidden"/>
+      <video id="lbVideo" class="video-js vjs-big-play-centered rounded-lg max-h-[85vh] max-w-full hidden" controls preload="auto" playsinline></video>
       <figcaption id="lbCaption" class="opacity-90 text-center max-w-2xl mt-4 text-white text-lg"></figcaption>
     </div>
   </div>
@@ -221,19 +221,19 @@
       const inferredType = typeOverride || (el?.dataset?.mediaType) || (el?.tagName === 'VIDEO' ? 'video' : 'image');
       lbItems.push({ src, caption: caption || el?.alt || '', type: inferredType });
       console.log('Added to lbItems. Total items:', lbItems.length);
-      
+
       // Click/keyboard to open
       const opener = el?.closest('[role="button"]') || el;
-      opener?.addEventListener('click', (e) => { 
+      opener?.addEventListener('click', (e) => {
         console.log('Lightbox click triggered for:', src);
-        e.preventDefault(); 
-        openLightboxBySrc(src); 
+        e.preventDefault();
+        openLightboxBySrc(src);
       });
       opener?.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter' || e.key === ' ') { 
+        if (e.key === 'Enter' || e.key === ' ') {
           console.log('Lightbox keydown triggered for:', src);
-          e.preventDefault(); 
-          openLightboxBySrc(src); 
+          e.preventDefault();
+          openLightboxBySrc(src);
         }
       });
       if (opener && opener.tabIndex < 0) opener.tabIndex = 0;
@@ -244,9 +244,9 @@
 
     function disposePlayer() {
       if (vjsPlayer) {
-        try { 
+        try {
           if (typeof vjsPlayer.pause === 'function') vjsPlayer.pause();
-          if (typeof vjsPlayer.dispose === 'function') vjsPlayer.dispose(); 
+          if (typeof vjsPlayer.dispose === 'function') vjsPlayer.dispose();
         } catch (error) {
           console.warn('Error disposing video player:', error);
         }
@@ -273,23 +273,23 @@
       if (isVideo) {
         // Hide image, show video
         if (lbImg) lbImg.classList.add('hidden');
-        
+
         // Always dispose existing player first
         disposePlayer();
-        
+
         // Get or create the video container
         const lightboxContent = lightbox?.querySelector('div[class*="max-w-3xl"]');
         if (!lightboxContent) {
           console.error('Lightbox content container not found');
           return;
         }
-        
+
         // Remove any existing video element
         const existingVideo = document.getElementById('lbVideo');
         if (existingVideo) {
           existingVideo.remove();
         }
-        
+
         // Create a completely fresh video element
         const newVideo = document.createElement('video');
         newVideo.id = 'lbVideo';
@@ -297,7 +297,7 @@
         newVideo.setAttribute('controls', 'true');
         newVideo.setAttribute('preload', 'auto');
         newVideo.setAttribute('playsinline', 'true');
-        
+
         // Insert the new video element before the caption
         const caption = lightboxContent.querySelector('#lbCaption');
         if (caption) {
@@ -305,19 +305,19 @@
         } else {
           lightboxContent.appendChild(newVideo);
         }
-        
+
         // Update our reference
         lbVideo = newVideo;
-        
+
         // Initialize Video.js on the fresh element
         if (window.videojs) {
           try {
             // Small delay to ensure DOM is ready
             setTimeout(() => {
               if (document.contains(lbVideo)) {
-                vjsPlayer = window.videojs(lbVideo, { 
-                  controls: true, 
-                  preload: 'auto', 
+                vjsPlayer = window.videojs(lbVideo, {
+                  controls: true,
+                  preload: 'auto',
                   playsinline: true,
                   fluid: true,
                   responsive: true
@@ -336,7 +336,7 @@
           // fallback without video.js
           lbVideo.src = item.src;
         }
-        
+
         lbVideo.classList.remove('hidden');
       } else {
         // Image mode
@@ -369,19 +369,19 @@
       openLightboxByIndex(idx >= 0 ? idx : 0);
     }
 
-    function closeLightbox() { 
+    function closeLightbox() {
       disposePlayer();
       // Hide the lightbox and reset overflow
-      lightbox?.classList.add('hidden'); 
-      document.body.style.overflow = ''; 
-      
+      lightbox?.classList.add('hidden');
+      document.body.style.overflow = '';
+
       // Reset video element reference to clean state
       const currentVideo = document.getElementById('lbVideo');
       if (currentVideo) {
         currentVideo.classList.add('hidden');
         currentVideo.removeAttribute('src');
       }
-      
+
       // Reset lbVideo reference for next use
       lbVideo = document.getElementById('lbVideo');
     }
@@ -424,7 +424,7 @@
         if (video.tabIndex < 0) video.tabIndex = 0;
         if (!video.getAttribute('role')) video.setAttribute('role', 'button');
         addLightboxItem(video, src, caption, 'video');
-        
+
         // Also make play button overlay clickable for lightbox
         const container = video.closest('.group');
         if (container) {
@@ -516,7 +516,7 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.googleAnalyticsId }}"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);} 
+      function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
       gtag('config', '{{ site.googleAnalyticsId }}');
     </script>
