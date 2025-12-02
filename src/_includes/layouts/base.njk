@@ -1,538 +1,749 @@
 <!doctype html>
 <html lang="en" class="scroll-smooth">
-<head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>{{ title or site.title }}</title>
-  <meta name="description" content="{{ description or site.description }}"/>
-  <meta property="og:title" content="{{ ogTitle or site.ogTitle }}"/>
-  <meta property="og:description" content="{{ ogDescription or site.ogDescription }}"/>
-  <meta property="og:type" content="website"/>
-  <meta property="og:image" content="{{ site.ogImage }}"/>
-  <link rel="icon" href="/assets/favicon.ico"/>
-  <meta name="robots" content="index, follow"/>
-  <meta name="theme-color" content="#0ea5e9"/>
-  <meta property="og:site_name" content="{{ site.name }}"/>
-  <meta name="twitter:card" content="{{ site.twitterCard }}"/>
-  <meta name="twitter:title" content="{{ ogTitle or site.ogTitle }}"/>
-  <meta name="twitter:description" content="{{ ogDescription or site.ogDescription }}"/>
-  <meta name="twitter:image" content="{{ site.ogImage }}"/>
-
-  {% block meta %}
-  {% endblock %}
-
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "{{ site.name }}",
-    "slogan": "Simplify the Process. Amplify the Precision.",
-    "description": "Samplify is a Saudi-born health tech company redefining medical sample logistics in line with Vision 2030. We design and manufacture innovative solutions that ensure samples are transported with accuracy, efficiency, and full traceability. Our technology delivers real-time location and temperature tracking, digital integration with various LIS and TMS systems, automated sorting, helps improve compliance and strengthen patient care by empowering hospitals, laboratories, and logistics providers to safeguard sample integrity.",
-    "email": "BD@samplify.net",
-    "logo": "assets/logo.webp",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Riyadh",
-      "addressCountry": "Kingdom of Saudi Arabia"
-    },
-    "sameAs": [
-      "https://www.linkedin.com/company/samplifyhealthcarelogistics/",
-      "https://www.facebook.com/Samplify.sa/",
-      "https://www.instagram.com/samplify.sa/"
-    ],
-    "contactPoint": [
-      {
-        "@type": "ContactPoint",
-        "email": "BD@samplify.net",
-        "telephone": "+966533038526",
-        "contactType": "customer support"
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>{{ title or site.title }}</title>
+    <meta name="description" content="{{ description or site.description }}"/>
+    <meta property="og:title" content="{{ ogTitle or site.ogTitle }}"/>
+    <meta property="og:description" content="{{ ogDescription or site.ogDescription }}"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:image" content="{{ site.ogImage }}"/>
+    <link rel="icon" href="/assets/favicon.ico"/>
+    <meta name="robots" content="index, follow"/>
+    <meta name="theme-color" content="#0ea5e9"/>
+    <meta property="og:site_name" content="{{ site.name }}"/>
+    <meta name="twitter:card" content="{{ site.twitterCard }}"/>
+    <meta name="twitter:title" content="{{ ogTitle or site.ogTitle }}"/>
+    <meta name="twitter:description" content="{{ ogDescription or site.ogDescription }}"/>
+    <meta name="twitter:image" content="{{ site.ogImage }}"/> {% block meta %}{% endblock %}
+    <script type="application/ld+json">
+      { "@context": "https://schema.org", "@type": "Organization", "name": "{{ site.name }}", "slogan": "Simplify the Process.
+      Amplify the Precision.", "description": "Samplify is a Saudi-born health tech company redefining medical sample
+      logistics in line with Vision 2030. We design and manufacture innovative solutions that ensure samples are transported
+      with accuracy, efficiency, and full traceability. Our technology delivers real-time location and temperature tracking,
+      digital integration with various LIS and TMS systems, automated sorting, helps improve compliance and strengthen patient
+      care by empowering hospitals, laboratories, and logistics providers to safeguard sample integrity.", "email":
+      "bd@samplify.net", "logo": "assets/logo.webp", "address": { "@type": "PostalAddress", "addressLocality": "Riyadh",
+      "addressCountry": "Kingdom of Saudi Arabia" }, "sameAs": [
+      "https://www.linkedin.com/company/samplifyhealthcarelogistics/", "https://www.facebook.com/Samplify.sa/",
+      "https://www.instagram.com/samplify.sa/" ], "contactPoint": [ { "@type": "ContactPoint", "email": "bd@samplify.net",
+      "telephone": "+966533038526", "contactType": "customer support" } ] }
+    </script>
+    {% block jsonld %}{% endblock %}
+    <link href="/assets/style.css" rel="stylesheet">
+    <style>
+      /* Masonry using CSS columns for responsive gallery */
+      .masonry {
+        columns: 1;
+        column-gap: 1rem;
       }
-    ]
-  }
-  </script>
-  {% block jsonld %}
-  {% endblock %}
-
-  <link href="/assets/style.css" rel="stylesheet">
-
-  <style>
-    /* Masonry using CSS columns for responsive gallery */
-    .masonry { columns: 1; column-gap: 1rem; }
-    .masonry-item { break-inside: avoid; margin-bottom: 1rem; }
-    @media (min-width: 640px) { .masonry { columns: 2; } }
-    @media (min-width: 1024px) { .masonry { columns: 3; } }
-    @media (min-width: 1280px) { .masonry { columns: 4; } }
-
-    /* Simple fade/slide reveal animations */
-    .reveal { opacity: 0; transform: translateY(12px); transition: opacity .6s ease, transform .6s ease; }
-    .reveal.in { opacity: 1; transform: translateY(0); }
-
-    /* Typing caret effect */
-    .typing::after { content: '|'; animation: blink 1s step-end infinite; margin-left: 2px; }
-    @keyframes blink { 50% { opacity: 0; } }
-
-    /* Skeleton shimmer */
-    .skeleton { background: linear-gradient(90deg, rgba(0,0,0,0.06) 25%, rgba(0,0,0,0.12) 37%, rgba(0,0,0,0.06) 63%); background-size: 400% 100%; animation: shimmer 1.4s ease-in-out infinite; }
-    @keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
-
-    /* Accessible custom focus ring */
-    .focus-ring:focus-visible { outline: none; box-shadow: 0 0 0 3px rgba(14,165,233,.5); border-radius: .5rem; }
-
-    /* Toasts */
-    .toast-root { position: fixed; right: 1rem; bottom: 1rem; z-index: 60; display: flex; flex-direction: column; gap: .5rem; }
-    .toast { display: flex; align-items: center; gap: .5rem; padding: .75rem 1rem; border-radius: .75rem; color: #0f172a; background: #fff; box-shadow: 0 10px 20px -10px rgba(2,6,23,.4); border: 1px solid rgba(148,163,184,.4); animation: toast-in .2s ease-out; }
-    .toast-success { border-color: rgba(34,197,94,.5); box-shadow: 0 10px 20px -10px rgba(34,197,94,.4); }
-    .toast-error { border-color: rgba(239,68,68,.5); box-shadow: 0 10px 20px -10px rgba(239,68,68,.4); }
-    @keyframes toast-in { from { transform: translateY(6px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
-  </style>
-
-  {% block styles %}
-  {% endblock %}
-</head>
-<body class="min-h-screen bg-white text-slate-800 selection:bg-skybrand-500/20 selection:text-deepblue-900">
-  {% include "header.njk" %}
-  <main id="home">
-    {% block content %}
-    {% endblock %}
-  </main>
-  {% include "footer.njk" %}
-
-  <!-- Lightbox Modal (site-wide) -->
-  <div id="lightbox" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-md flex items-center justify-center" role="dialog" aria-modal="true" aria-label="Media viewer">
-    <!-- Navigation Buttons at screen edges (square aspect) -->
-    <button id="lbPrev" class="fixed left-4 top-1/2 -translate-y-1/2 w-12 h-12 p-0 rounded-lg bg-white/10 text-white hover:bg-white/20 focus-ring z-60 flex items-center justify-center" aria-label="Previous media">
-      <i class="fas fa-chevron-left text-2xl"></i>
-    </button>
-    <button id="lbNext" class="fixed right-4 top-1/2 -translate-y-1/2 w-12 h-12 p-0 rounded-lg bg-white/10 text-white hover:bg-white/20 focus-ring z-60 flex items-center justify-center" aria-label="Next media">
-      <i class="fas fa-chevron-right text-2xl"></i>
-    </button>
-    <!-- Close Button at top right edge (square aspect) -->
-    <button id="lbClose" class="fixed top-4 right-4 w-12 h-12 p-0 rounded-lg bg-white/10 text-white hover:bg-white/20 focus-ring z-60 flex items-center justify-center" aria-label="Close viewer">
-      <i class="fas fa-times text-2xl"></i>
-    </button>
-    <div class="relative max-w-3xl w-full mx-auto p-4 flex flex-col items-center justify-center">
-      <img id="lbImage" alt="Gallery image" class="max-h-[85vh] max-w-full rounded-lg hidden"/>
-      <video id="lbVideo" class="video-js vjs-big-play-centered rounded-lg max-h-[85vh] max-w-full hidden" controls preload="auto" playsinline></video>
-      <figcaption id="lbCaption" class="opacity-90 text-center max-w-2xl mt-4 text-white text-lg"></figcaption>
-    </div>
-  </div>
-
-  <!-- JavaScript -->
-  <script>
-    // Set current year
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    // Toast helper
-    function showToast(message, type = 'info', timeout = 3500) {
-      const root = document.getElementById('toast-root');
-      if (!root) return;
-      const toast = document.createElement('div');
-      toast.className = `toast ${type === 'success' ? 'toast-success' : type === 'error' ? 'toast-error' : ''}`;
-      const icon = document.createElement('i');
-      icon.className = type === 'success' ? 'fa-solid fa-circle-check text-emerald-500' : type === 'error' ? 'fa-solid fa-circle-exclamation text-red-500' : 'fa-solid fa-circle-info text-skybrand-500';
-      const span = document.createElement('span');
-      span.textContent = message;
-      toast.appendChild(icon);
-      toast.appendChild(span);
-      root.appendChild(toast);
-      setTimeout(() => {
-        toast.style.transition = 'opacity .2s ease, transform .2s ease';
-        toast.style.opacity = '0';
-        toast.style.transform = 'translateY(6px)';
-        setTimeout(() => toast.remove(), 220);
-      }, timeout);
-    }
-
-    // Mobile nav toggle
-    const menuBtn = document.getElementById('menuBtn');
-    const mobileNav = document.getElementById('mobileNav');
-    if (menuBtn && mobileNav) {
-      menuBtn.addEventListener('click', () => {
-        const expanded = menuBtn.getAttribute('aria-expanded') === 'true';
-        menuBtn.setAttribute('aria-expanded', String(!expanded));
-        mobileNav.style.maxHeight = expanded ? '0px' : mobileNav.scrollHeight + 'px';
-      });
-      mobileNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-        menuBtn.setAttribute('aria-expanded', 'false');
-        mobileNav.style.maxHeight = '0px';
-      }));
-    }
-
-    // Smooth scrolling for in-page anchors
-    document.querySelectorAll('a[href^="#"]').forEach(link => {
-      link.addEventListener('click', (e) => {
-        const id = link.getAttribute('href').slice(1);
-        const el = document.getElementById(id);
-        if (el) {
-          e.preventDefault();
-          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          history.pushState(null, '', '#' + id);
-        }
-      });
-    });
-
-    // Intersection Observer reveal
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('in');
-          io.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.12 });
-    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-
-    // Typing effect for hero headline
-    const headline = document.getElementById('heroHeadline');
-    if (headline) {
-      const fullText = headline.textContent.trim();
-      let idx = 0;
-      headline.textContent = '';
-      function typeNext() {
-        if (idx <= fullText.length) {
-          headline.textContent = fullText.slice(0, idx);
-          idx++;
-          setTimeout(typeNext, idx < 10 ? 30 : 14);
+      .masonry-item {
+        break-inside: avoid;
+        margin-bottom: 1rem;
+      }
+      @media(min-width: 640px) {
+        .masonry {
+          columns: 2;
         }
       }
-      window.addEventListener('load', typeNext);
-    }
-
-    // Unified Lightbox for images and videos
-    const lightbox = document.getElementById('lightbox');
-    const lbImg = document.getElementById('lbImage');
-    const lbCaption = document.getElementById('lbCaption');
-    const lbClose = document.getElementById('lbClose');
-    const lbPrev = document.getElementById('lbPrev');
-    const lbNext = document.getElementById('lbNext');
-    let lbVideo = document.getElementById('lbVideo'); // Use let so we can reassign when creating fresh elements
-    let vjsPlayer = null;
-
-    // A single array of items the lightbox can navigate through
-    const lbItems = [];
-
-    function addLightboxItem(el, src, caption, typeOverride) {
-      console.log('Adding lightbox item:', src, caption, typeOverride);
-      // avoid duplicates by src
-      if (lbItems.find(i => i.src === src)) {
-        console.log('Duplicate found, skipping:', src);
-        return;
-      }
-      const inferredType = typeOverride || (el?.dataset?.mediaType) || (el?.tagName === 'VIDEO' ? 'video' : 'image');
-      lbItems.push({ src, caption: caption || el?.alt || '', type: inferredType });
-      console.log('Added to lbItems. Total items:', lbItems.length);
-
-      // Click/keyboard to open
-      const opener = el?.closest('[role="button"]') || el;
-      opener?.addEventListener('click', (e) => {
-        console.log('Lightbox click triggered for:', src);
-        e.preventDefault();
-        openLightboxBySrc(src);
-      });
-      opener?.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          console.log('Lightbox keydown triggered for:', src);
-          e.preventDefault();
-          openLightboxBySrc(src);
+      @media(min-width: 1024px) {
+        .masonry {
+          columns: 3;
         }
-      });
-      if (opener && opener.tabIndex < 0) opener.tabIndex = 0;
-      if (opener && !opener.getAttribute('aria-label')) opener.setAttribute('aria-label', 'Open media');
-    }
-
-    let currentIndex = 0;
-
-    function disposePlayer() {
-      if (vjsPlayer) {
-        try {
-          if (typeof vjsPlayer.pause === 'function') vjsPlayer.pause();
-          if (typeof vjsPlayer.dispose === 'function') vjsPlayer.dispose();
-        } catch (error) {
-          console.warn('Error disposing video player:', error);
-        }
-        vjsPlayer = null;
       }
-      // Clean up any lingering Video.js artifacts from the lightbox
-      const lightboxContent = lightbox?.querySelector('div[class*="max-w-3xl"]');
-      if (lightboxContent) {
-        const vjsElements = lightboxContent.querySelectorAll('.vjs-poster, .vjs-loading-spinner, .vjs-big-play-button, .vjs-control-bar, .vjs-tech, .vjs-text-track-display');
-        vjsElements?.forEach(el => {
-          try { el.remove(); } catch (_) {}
+      @media(min-width: 1280px) {
+        .masonry {
+          columns: 4;
+        }
+      }
+      /* Simple fade/slide reveal animations */
+      .reveal {
+        opacity: 0;
+        transform: translateY(12px);
+        transition: opacity 0.6s ease, transform 0.6s ease;
+      }
+      .reveal.in {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      /* Typing caret effect */
+      .typing::after {
+        content: '|';
+        animation: blink 1s step-end infinite;
+        margin-left: 2px;
+      }
+      @keyframes blink {
+        50% {
+          opacity: 0;
+        }
+      }
+      /* Skeleton shimmer */
+      .skeleton {
+        background: linear-gradient(90deg, rgba(0,0,0,0.06) 25%, rgba(0,0,0,0.12) 37%, rgba(0,0,0,0.06) 63%);
+        background-size: 400% 100%;
+        animation: shimmer 1.4s ease-in-out infinite;
+      }
+      @keyframes shimmer {
+        0% {
+          background-position: 200% 0;
+        }
+        100% {
+          background-position: -200% 0;
+        }
+      }
+      /* Accessible custom focus ring */
+      .focus-ring:focus-visible {
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(14, 165, 233, .5);
+        border-radius: 0.5rem;
+      }
+      /* Toasts */
+      .toast-root {
+        position: fixed;
+        right: 1rem;
+        bottom: 1rem;
+        z-index: 60;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+      .toast {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.75rem 1rem;
+        border-radius: 0.75rem;
+        color: #0f172a;
+        background: #fff;
+        box-shadow: 0 10px 20px -10px rgba(2, 6, 23, .4);
+        border: 1px solid rgba(148, 163, 184, .4);
+        animation: toast-in 0.2s ease-out;
+      }
+      .toast-success {
+        border-color: rgba(34, 197, 94, .5);
+        box-shadow: 0 10px 20px -10px rgba(34, 197, 94, .4);
+      }
+      .toast-error {
+        border-color: rgba(239, 68, 68, .5);
+        box-shadow: 0 10px 20px -10px rgba(239, 68, 68, .4);
+      }
+      @keyframes toast-in {
+        from {
+          transform: translateY(6px);
+          opacity: 0;
+        }
+        to {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+    </style>
+    {% block styles %}{% endblock %}
+  </head>
+  <body class="min-h-screen bg-white text-slate-800 selection:bg-skybrand-500/20 selection:text-deepblue-900">
+    {% include "header.njk" %}
+    <main id="home"> {% block content %}{% endblock %}
+      </main>
+      {% include "footer.njk" %}
+      <!-- Lightbox Modal (site-wide) -->
+      <div
+        id="lightbox"
+        class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-md flex items-center justify-center"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Media viewer">
+        <!-- Navigation Buttons at screen edges (square aspect) -->
+        <button
+          id="lbPrev"
+          class="fixed left-4 top-1/2 -translate-y-1/2 w-12 h-12 p-0 rounded-lg bg-white/10 text-white hover:bg-white/20 focus-ring
+            z-60 flex items-center justify-center"
+          aria-label="Previous media">
+          <i class="fas fa-chevron-left text-2xl"></i>
+        </button>
+        <button
+          id="lbNext"
+          class="fixed right-4 top-1/2 -translate-y-1/2 w-12 h-12 p-0 rounded-lg bg-white/10 text-white hover:bg-white/20
+            focus-ring z-60 flex items-center justify-center"
+          aria-label="Next media">
+          <i class="fas fa-chevron-right text-2xl"></i>
+        </button>
+        <!-- Close Button at top right edge (square aspect) -->
+        <button
+          id="lbClose"
+          class="fixed top-4 right-4 w-12 h-12 p-0 rounded-lg bg-white/10 text-white hover:bg-white/20 focus-ring z-60 flex
+            items-center justify-center"
+          aria-label="Close viewer">
+          <i class="fas fa-times text-2xl"></i>
+        </button>
+        <div class="relative max-w-3xl w-full mx-auto p-4 flex flex-col items-center justify-center">
+          <img id="lbImage" alt="Gallery image" class="max-h-[85vh] max-w-full rounded-lg hidden"/>
+          <video
+            id="lbVideo"
+            class="video-js vjs-big-play-centered rounded-lg max-h-[85vh] max-w-full hidden"
+            controls
+            preload="auto"
+            playsinline></video>
+          <figcaption id="lbCaption" class="opacity-90 text-center max-w-2xl mt-4 text-white text-lg"></figcaption>
+        </div>
+      </div>
+      <!-- JavaScript -->
+      <script>
+        // Set current year
+        document.getElementById('year').textContent = new Date().getFullYear();
+        // Toast helper
+        function showToast(message, type = 'info', timeout = 3500) {
+          const root = document.getElementById('toast-root');
+          if (! root) 
+            return;
+          
+          const toast = document.createElement('div');
+          toast.className = `toast ${
+            type === 'success'
+              ? 'toast-success'
+              : type === 'error'
+                ? 'toast-error'
+                : ''
+              }`;
+          const icon = document.createElement('i');
+          icon.className = type === 'success'
+            ? 'fa-solid fa-circle-check text-emerald-500'
+            : type === 'error'
+              ? 'fa-solid fa-circle-exclamation text-red-500'
+              : 'fa-solid fa-circle-info text-skybrand-500';
+          const span = document.createElement('span');
+          span.textContent = message;
+          toast.appendChild(icon);
+          toast.appendChild(span);
+          root.appendChild(toast);
+          setTimeout(() => {
+            toast.style.transition = 'opacity .2s ease, transform .2s ease';
+            toast.style.opacity = '0';
+            toast.style.transform = 'translateY(6px)';
+            setTimeout(() => toast.remove(), 220);
+          }, timeout);
+        }
+        // Mobile nav toggle
+        const menuBtn = document.getElementById('menuBtn');
+        const mobileNav = document.getElementById('mobileNav');
+        if (menuBtn && mobileNav) {
+          menuBtn.addEventListener('click', () => {
+            const expanded = menuBtn.getAttribute('aria-expanded') === 'true';
+            menuBtn.setAttribute('aria-expanded', String(! expanded));
+            mobileNav.style.maxHeight = expanded
+              ? '0px'
+              : mobileNav.scrollHeight + 'px';
+          });
+          mobileNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+            menuBtn.setAttribute('aria-expanded', 'false');
+            mobileNav.style.maxHeight = '0px';
+          }));
+        }
+        // Smooth scrolling for in-page anchors
+        document.querySelectorAll('a[href^="#"]').forEach(link => {
+          link.addEventListener('click', (e) => {
+            const id = link.getAttribute('href').slice(1);
+            const el = document.getElementById(id);
+            if (el) {
+              e.preventDefault();
+              el.scrollIntoView({behavior: 'smooth', block: 'start'});
+              history.pushState(null, '', '#' + id);
+            }
+          });
         });
-      }
-    }
-
-    function renderCurrent() {
-      const item = lbItems[currentIndex];
-      if (!item) return;
-      // Show/hide navigation arrows based on item count
-      const showArrows = lbItems.length > 1;
-      if (lbPrev) lbPrev.style.display = showArrows ? '' : 'none';
-      if (lbNext) lbNext.style.display = showArrows ? '' : 'none';
-      const isVideo = item.type === 'video';
-      if (isVideo) {
-        // Hide image, show video
-        if (lbImg) lbImg.classList.add('hidden');
-
-        // Always dispose existing player first
-        disposePlayer();
-
-        // Get or create the video container
-        const lightboxContent = lightbox?.querySelector('div[class*="max-w-3xl"]');
-        if (!lightboxContent) {
-          console.error('Lightbox content container not found');
-          return;
-        }
-
-        // Remove any existing video element
-        const existingVideo = document.getElementById('lbVideo');
-        if (existingVideo) {
-          existingVideo.remove();
-        }
-
-        // Create a completely fresh video element
-        const newVideo = document.createElement('video');
-        newVideo.id = 'lbVideo';
-        newVideo.className = 'video-js vjs-big-play-centered rounded-lg shadow-2xl max-h-[85vh] max-w-full';
-        newVideo.setAttribute('controls', 'true');
-        newVideo.setAttribute('preload', 'auto');
-        newVideo.setAttribute('playsinline', 'true');
-
-        // Insert the new video element before the caption
-        const caption = lightboxContent.querySelector('#lbCaption');
-        if (caption) {
-          lightboxContent.insertBefore(newVideo, caption);
-        } else {
-          lightboxContent.appendChild(newVideo);
-        }
-
-        // Update our reference
-        lbVideo = newVideo;
-
-        // Initialize Video.js on the fresh element
-        if (window.videojs) {
-          try {
-            // Small delay to ensure DOM is ready
-            setTimeout(() => {
-              if (document.contains(lbVideo)) {
-                vjsPlayer = window.videojs(lbVideo, {
-                  controls: true,
-                  preload: 'auto',
-                  playsinline: true,
-                  fluid: true,
-                  responsive: true
-                });
-                vjsPlayer.ready(() => {
-                  vjsPlayer.src({ src: item.src, type: 'video/webm' });
-                });
-              }
-            }, 50);
-          } catch (error) {
-            console.warn('Video.js initialization failed, using fallback:', error);
-            // fallback without video.js
-            lbVideo.src = item.src;
-          }
-        } else {
-          // fallback without video.js
-          lbVideo.src = item.src;
-        }
-
-        lbVideo.classList.remove('hidden');
-      } else {
-        // Image mode
-        disposePlayer();
-        if (lbVideo) lbVideo.classList.add('hidden');
-        if (lbImg) {
-          lbImg.src = item.src;
-          lbImg.classList.remove('hidden');
-        }
-      }
-      if (lbCaption) {
-        lbCaption.textContent = item.caption || '';
-        lbCaption.parentElement?.classList.toggle('hidden', !item.caption);
-      }
-    }
-
-    function openLightboxByIndex(i) {
-      if (!lbItems.length) return;
-      if (i < 0) i = lbItems.length - 1;
-      if (i >= lbItems.length) i = 0;
-      currentIndex = i;
-      renderCurrent();
-      lightbox?.classList.remove('hidden');
-      lbClose?.focus();
-      document.body.style.overflow = 'hidden';
-    }
-
-    function openLightboxBySrc(src) {
-      const idx = lbItems.findIndex(i => i.src === src);
-      openLightboxByIndex(idx >= 0 ? idx : 0);
-    }
-
-    function closeLightbox() {
-      disposePlayer();
-      // Hide the lightbox and reset overflow
-      lightbox?.classList.add('hidden');
-      document.body.style.overflow = '';
-
-      // Reset video element reference to clean state
-      const currentVideo = document.getElementById('lbVideo');
-      if (currentVideo) {
-        currentVideo.classList.add('hidden');
-        currentVideo.removeAttribute('src');
-      }
-
-      // Reset lbVideo reference for next use
-      lbVideo = document.getElementById('lbVideo');
-    }
-    function showIndex(i) { openLightboxByIndex(i); }
-
-    lbClose?.addEventListener('click', closeLightbox);
-    lbPrev?.addEventListener('click', () => showIndex(currentIndex - 1));
-    lbNext?.addEventListener('click', () => showIndex(currentIndex + 1));
-    window.addEventListener('keydown', (e) => {
-      if (!lightbox || lightbox.classList.contains('hidden')) return;
-      if (e.key === 'Escape') closeLightbox();
-      if (e.key === 'ArrowLeft') showIndex(currentIndex - 1);
-      if (e.key === 'ArrowRight') showIndex(currentIndex + 1);
-    });
-
-    // Make functions globally accessible after all are defined
-    window.addLightboxItem = addLightboxItem;
-    window.lbItems = lbItems;
-    window.openLightboxBySrc = openLightboxBySrc;
-
-    // Add any site-wide images that opt-in via data-lightbox
-    document.querySelectorAll('img[data-lightbox]').forEach(img => {
-      const src = img.getAttribute('src');
-      const caption = img.getAttribute('data-caption') || img.alt || '';
-      if (!src) return;
-      // ensure element is keyboard-accessible
-      const wrapper = img.closest('figure, article, div');
-      if (wrapper) { wrapper.setAttribute('role', 'button'); if (!wrapper.hasAttribute('tabindex')) wrapper.tabIndex = 0; }
-      addLightboxItem(img, src, caption);
-    });
-
-    // Add any site-wide videos that opt-in via data-lightbox
-    // Use setTimeout to ensure this runs after gallery initialization
-    setTimeout(() => {
-      document.querySelectorAll('video[data-lightbox]').forEach(video => {
-        const src = video.getAttribute('src') || video.querySelector('source')?.getAttribute('src');
-        const caption = video.getAttribute('data-caption') || video.getAttribute('aria-label') || '';
-        if (!src) return;
-        // ensure element is keyboard-accessible (if not already)
-        if (video.tabIndex < 0) video.tabIndex = 0;
-        if (!video.getAttribute('role')) video.setAttribute('role', 'button');
-        addLightboxItem(video, src, caption, 'video');
-
-        // Also make play button overlay clickable for lightbox
-        const container = video.closest('.group');
-        if (container) {
-          const playButton = container.querySelector('svg');
-          if (playButton) {
-            const playButtonContainer = playButton.closest('div');
-            if (playButtonContainer) {
-              playButtonContainer.style.cursor = 'pointer';
-              playButtonContainer.addEventListener('click', (e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                openLightboxBySrc(src);
-              });
-              playButtonContainer.addEventListener('keydown', (e) => {
-                if (e.key === 'Enter' || e.key === ' ') {
-                  e.preventDefault();
-                  e.stopPropagation();
-                  openLightboxBySrc(src);
-                }
-              });
-              if (!playButtonContainer.getAttribute('tabindex')) playButtonContainer.tabIndex = 0;
-              if (!playButtonContainer.getAttribute('aria-label')) {
-                playButtonContainer.setAttribute('aria-label', 'Play video in lightbox');
-              }
+        // Intersection Observer reveal
+        const io = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry
+                .target
+                .classList
+                .add('in');
+              io.unobserve(entry.target);
+            }
+          });
+        }, {threshold: 0.12});
+        document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+        // Typing effect for hero headline
+        const headline = document.getElementById('heroHeadline');
+        if (headline) {
+          const fullText = headline.textContent.trim();
+          let idx = 0;
+          headline.textContent = '';
+          function typeNext() {
+            if (idx <= fullText.length) {
+              headline.textContent = fullText.slice(0, idx);
+              idx++;
+              setTimeout(
+                typeNext, idx < 10
+                ? 30
+                : 14);
             }
           }
+          window.addEventListener('load', typeNext);
         }
-      });
-    }, 100);
-
-    // Contact form validation & submission (only if present)
-    const form = document.getElementById('contactForm');
-    if (form) {
-      const statusEl = document.getElementById('formStatus');
-      function showError(id, show) { const el = document.getElementById(id); if (!el) return; el.classList.toggle('hidden', !show); }
-      function validateEmail(email) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email); }
-      form.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        const submitBtn = form.querySelector('button[type="submit"]');
-        const data = new FormData(form);
-        const name = data.get('name')?.toString().trim();
-        const email = data.get('email')?.toString().trim();
-        const message = data.get('message')?.toString().trim();
-        let valid = true;
-        showError('err-name', !name); if (!name) valid = false;
-        showError('err-email', !validateEmail(email || '')); if (!validateEmail(email || '')) valid = false;
-        showError('err-message', !message); if (!message) valid = false;
-        if (!valid) return;
-        submitBtn.disabled = true; statusEl.textContent = 'Sending...'; statusEl.className = 'text-sm text-slate-500';
-        try {
-          const res = await fetch(form.action, { method: 'POST', headers: { 'Accept': 'application/json' }, body: data });
-          if (res.ok) {
-            statusEl.textContent = 'Thanks! Your message has been sent.'; statusEl.className = 'text-sm text-green-600'; showToast('Thanks! Your message has been sent.', 'success'); form.reset();
-          } else {
-            const err = await res.json().catch(() => ({})); const msg = err.error || 'Something went wrong. Please try again later.';
-            statusEl.textContent = msg; statusEl.className = 'text-sm text-red-600'; showToast(msg, 'error');
+        // Unified Lightbox for images and videos
+        const lightbox = document.getElementById('lightbox');
+        const lbImg = document.getElementById('lbImage');
+        const lbCaption = document.getElementById('lbCaption');
+        const lbClose = document.getElementById('lbClose');
+        const lbPrev = document.getElementById('lbPrev');
+        const lbNext = document.getElementById('lbNext');
+        let lbVideo = document.getElementById('lbVideo'); // Use let so we can reassign when creating fresh elements
+        let vjsPlayer = null;
+        // A single array of items the lightbox can navigate through
+        const lbItems = [];
+        function addLightboxItem(el, src, caption, typeOverride) {
+          console.log('Adding lightbox item:', src, caption, typeOverride);
+          // avoid duplicates by src
+          if (lbItems.find(i => i.src === src)) {
+            console.log('Duplicate found, skipping:', src);
+            return;
           }
-        } catch (err) {
-          const msg = 'Network error. Please check your connection and try again.';
-          statusEl.textContent = msg; statusEl.className = 'text-sm text-red-600'; showToast(msg, 'error');
-        } finally { submitBtn.disabled = false; }
-      });
-    }
-
-    // Prefill contact form when clicking Request a Demo
-    document.querySelectorAll('a[data-demo]').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const msg = document.getElementById('message');
-        if (msg && !msg.value) {
-          msg.value = "I'd like to request a demo of Samplify.";
+          const inferredType = typeOverride || (el ?. dataset ?. mediaType) || (
+            el ?. tagName === 'VIDEO'
+            ? 'video'
+            : 'image');
+          lbItems.push({
+            src,
+            caption: caption || el ?. alt || '',
+            type: inferredType
+          });
+          console.log('Added to lbItems. Total items:', lbItems.length);
+          // Click/keyboard to open
+          const opener = el ?. closest('[role="button"]') || el;
+          opener ?. addEventListener('click', (e) => {
+            console.log('Lightbox click triggered for:', src);
+            e.preventDefault();
+            openLightboxBySrc(src);
+          });
+          opener ?. addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              console.log('Lightbox keydown triggered for:', src);
+              e.preventDefault();
+              openLightboxBySrc(src);
+            }
+          });
+          if (opener && opener.tabIndex < 0) 
+            opener.tabIndex = 0;
+          
+          if (opener && ! opener.getAttribute('aria-label')) 
+            opener.setAttribute('aria-label', 'Open media');
+          
         }
-      });
-    });
-
-    // Image fallback for missing assets (avoid broken images)
-    document.querySelectorAll('img.with-fallback[data-fallback]').forEach(img => {
-      img.addEventListener('error', () => {
-        const note = document.createElement('div');
-        note.className = 'w-full rounded-lg border border-slate-200 bg-slate-50 p-4 text-slate-600 text-sm';
-        note.setAttribute('role', 'note');
-        note.textContent = img.getAttribute('data-fallback') || 'Image currently unavailable.';
-        img.replaceWith(note);
-      }, { once: true });
-    });
-  </script>
-
-  {% if site.analyticsEnabled %}
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.googleAnalyticsId }}"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', '{{ site.googleAnalyticsId }}');
-    </script>
-
-    <!-- PostHog Analytics -->
-    <script>
-      !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init Re Ms Fs Pe Rs Cs capture Ve calculateEventProperties Ds register register_once register_for_session unregister unregister_for_session zs getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSurveysLoaded onSessionId getSurveys getActiveMatchingSurveys renderSurvey canRenderSurvey canRenderSurveyAsync identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException loadToolbar get_property getSessionProperty Ls As createPersonProfile Ns Is Us opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing is_capturing clear_opt_in_out_capturing Os debug I js getPageViewId captureTraceFeedback captureTraceMetric".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
-      posthog.init('{{ site.posthogKey }}', { api_host: '{{ site.posthogHost }}', defaults: '{{ site.posthogDefaults }}', person_profiles: 'always' });
-    </script>
-  {% endif %}
-
-  <!-- Font Awesome -->
-  <link rel="preconnect" href="https://ka-f.fontawesome.com/"/>
-  <script src="https://kit.fontawesome.com/a51f251d24.js" crossorigin="anonymous" defer></script>
-
-  {% block scripts %}
-  {% endblock %}
-</body>
-</html>
+        let currentIndex = 0;
+        function disposePlayer() {
+          if (vjsPlayer) {
+            try {
+              if (typeof vjsPlayer.pause === 'function') 
+                vjsPlayer.pause();
+              
+              if (typeof vjsPlayer.dispose === 'function') 
+                vjsPlayer.dispose();
+              
+            } catch (error) {
+              console.warn('Error disposing video player:', error);
+            }
+            vjsPlayer = null;
+          }
+          // Clean up any lingering Video.js artifacts from the lightbox
+          const lightboxContent = lightbox ?. querySelector('div[class*="max-w-3xl"]');
+          if (lightboxContent) {
+            const vjsElements = lightboxContent.querySelectorAll('.vjs-poster, .vjs-loading-spinner, .vjs-big-play-button, .vjs-control-bar, .vjs-tech, .vjs-text-track-display');
+            vjsElements ?. forEach(el => {
+              try {
+                el.remove();
+              } catch (_) {}
+            });
+          }
+        }
+        function renderCurrent() {
+          const item = lbItems[currentIndex];
+          if (! item) 
+            return;
+          
+          // Show/hide navigation arrows based on item count
+          const showArrows = lbItems.length > 1;
+          if (lbPrev) 
+            lbPrev.style.display = showArrows
+              ? ''
+              : 'none';
+          
+          if (lbNext) 
+            lbNext.style.display = showArrows
+              ? ''
+              : 'none';
+          
+          const isVideo = item.type === 'video';
+          if (isVideo) { // Hide image, show video
+            if (lbImg) 
+              lbImg.classList.add('hidden');
+            
+            // Always dispose existing player first
+            disposePlayer();
+            // Get or create the video container
+            const lightboxContent = lightbox ?. querySelector('div[class*="max-w-3xl"]');
+            if (! lightboxContent) {
+              console.error('Lightbox content container not found');
+              return;
+            }
+            // Remove any existing video element
+            const existingVideo = document.getElementById('lbVideo');
+            if (existingVideo) {
+              existingVideo.remove();
+            }
+            // Create a completely fresh video element
+            const newVideo = document.createElement('video');
+            newVideo.id = 'lbVideo';
+            newVideo.className = 'video-js vjs-big-play-centered rounded-lg shadow-2xl max-h-[85vh] max-w-full';
+            newVideo.setAttribute('controls', 'true');
+            newVideo.setAttribute('preload', 'auto');
+            newVideo.setAttribute('playsinline', 'true');
+            // Insert the new video element before the caption
+            const caption = lightboxContent.querySelector('#lbCaption');
+            if (caption) {
+              lightboxContent.insertBefore(newVideo, caption);
+            } else {
+              lightboxContent.appendChild(newVideo);
+            }
+            // Update our reference
+            lbVideo = newVideo;
+            // Initialize Video.js on the fresh element
+            if (window.videojs) {
+              try { // Small delay to ensure DOM is ready
+                setTimeout(() => {
+                  if (document.contains(lbVideo)) {
+                    vjsPlayer = window.videojs(lbVideo, {
+                      controls: true,
+                      preload: 'auto',
+                      playsinline: true,
+                      fluid: true,
+                      responsive: true
+                    });
+                    vjsPlayer.ready(() => {
+                      vjsPlayer.src({src: item.src, type: 'video/webm'});
+                    });
+                  }
+                }, 50);
+              } catch (error) {
+                console.warn('Video.js initialization failed, using fallback:', error);
+                // fallback without video.js
+                lbVideo.src = item.src;
+              }
+            } else { // fallback without video.js
+              lbVideo.src = item.src;
+            } lbVideo.classList.remove('hidden');
+          } else { // Image mode
+            disposePlayer();
+            if (lbVideo) 
+              lbVideo.classList.add('hidden');
+            
+            if (lbImg) {
+              lbImg.src = item.src;
+              lbImg.classList.remove('hidden');
+            }
+          }
+          if (lbCaption) {
+            lbCaption.textContent = item.caption || '';
+            lbCaption.parentElement ?. classList.toggle('hidden', ! item.caption);
+          }
+        }
+        function openLightboxByIndex(i) {
+          if (! lbItems.length) 
+            return;
+          
+          if (i < 0) 
+            i = lbItems.length - 1;
+          
+          if (i >= lbItems.length) 
+            i = 0;
+          
+          currentIndex = i;
+          renderCurrent();
+          lightbox ?. classList.remove('hidden');
+          lbClose ?. focus();
+          document
+            .body
+            .style
+            .overflow = 'hidden';
+        }
+        function openLightboxBySrc(src) {
+          const idx = lbItems.findIndex(i => i.src === src);
+          openLightboxByIndex(
+            idx >= 0
+            ? idx
+            : 0);
+        }
+        function closeLightbox() {
+          disposePlayer();
+          // Hide the lightbox and reset overflow
+          lightbox ?. classList.add('hidden');
+          document
+            .body
+            .style
+            .overflow = '';
+          // Reset video element reference to clean state
+          const currentVideo = document.getElementById('lbVideo');
+          if (currentVideo) {
+            currentVideo.classList.add('hidden');
+            currentVideo.removeAttribute('src');
+          }
+          // Reset lbVideo reference for next use
+          lbVideo = document.getElementById('lbVideo');
+        }
+        function showIndex(i) {
+          openLightboxByIndex(i);
+        }
+        lbClose ?. addEventListener('click', closeLightbox);
+        lbPrev ?. addEventListener('click', () => showIndex(currentIndex - 1));
+        lbNext ?. addEventListener('click', () => showIndex(currentIndex + 1));
+        window.addEventListener('keydown', (e) => {
+          if (! lightbox || lightbox.classList.contains('hidden')) 
+            return;
+          
+          if (e.key === 'Escape') 
+            closeLightbox();
+          
+          if (e.key === 'ArrowLeft') 
+            showIndex(currentIndex - 1);
+          
+          if (e.key === 'ArrowRight') 
+            showIndex(currentIndex + 1);
+          
+        });
+        // Make functions globally accessible after all are defined
+        window.addLightboxItem = addLightboxItem;
+        window.lbItems = lbItems;
+        window.openLightboxBySrc = openLightboxBySrc;
+        // Add any site-wide images that opt-in via data-lightbox
+        document.querySelectorAll('img[data-lightbox]').forEach(img => {
+          const src = img.getAttribute('src');
+          const caption = img.getAttribute('data-caption') || img.alt || '';
+          if (! src) 
+            return;
+          
+          // ensure element is keyboard-accessible
+          const wrapper = img.closest('figure, article, div');
+          if (wrapper) {
+            wrapper.setAttribute('role', 'button');
+            if (! wrapper.hasAttribute('tabindex')) 
+              wrapper.tabIndex = 0;
+            
+          }
+          addLightboxItem(img, src, caption);
+        });
+        // Add any site-wide videos that opt-in via data-lightbox Use setTimeout to ensure this runs after gallery
+        // initialization
+        setTimeout(() => {
+          document.querySelectorAll('video[data-lightbox]').forEach(video => {
+            const src = video.getAttribute('src') || video.querySelector('source') ?. getAttribute('src');
+            const caption = video.getAttribute('data-caption') || video.getAttribute('aria-label') || '';
+            if (! src) 
+              return;
+            
+            // ensure element is keyboard-accessible (if not already)
+            if (video.tabIndex < 0) 
+              video.tabIndex = 0;
+            
+            if (!video.getAttribute('role')) 
+              video.setAttribute('role', 'button');
+            
+            addLightboxItem(video, src, caption, 'video');
+            // Also make play button overlay clickable for lightbox
+            const container = video.closest('.group');
+            if (container) {
+              const playButton = container.querySelector('svg');
+              if (playButton) {
+                const playButtonContainer = playButton.closest('div');
+                if (playButtonContainer) {
+                  playButtonContainer.style.cursor = 'pointer';
+                  playButtonContainer.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    openLightboxBySrc(src);
+                  });
+                  playButtonContainer.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      e.preventDefault();
+                      e.stopPropagation();
+                      openLightboxBySrc(src);
+                    }
+                  });
+                  if (! playButtonContainer.getAttribute('tabindex')) 
+                    playButtonContainer.tabIndex = 0;
+                  
+                  if (! playButtonContainer.getAttribute('aria-label')) {
+                    playButtonContainer.setAttribute('aria-label', 'Play video in lightbox');
+                  }
+                }
+              }
+            }
+          });
+        }, 100);
+        // Contact form validation & submission (only if present)
+        const form = document.getElementById('contactForm');
+        if (form) {
+          const statusEl = document.getElementById('formStatus');
+          function showError(id, show) {
+            const el = document.getElementById(id);
+            if (! el) 
+              return;
+            
+            el.classList.toggle('hidden', ! show);
+          }
+          function validateEmail(email) {
+            return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+          }
+          form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const submitBtn = form.querySelector('button[type="submit"]');
+            const data = new FormData(form);
+            const name = data.get('name') ?. toString().trim();
+            const email = data.get('email') ?. toString().trim();
+            const message = data.get('message') ?. toString().trim();
+            let valid = true;
+            showError('err-name', ! name);
+            if (! name) 
+              valid = false;
+            
+            showError('err-email', ! validateEmail(email || ''));
+            if (! validateEmail(email || '')) 
+              valid = false;
+            
+            showError('err-message', ! message);
+            if (! message) 
+              valid = false;
+            
+            if (! valid) 
+              return;
+            
+            submitBtn.disabled = true;
+            statusEl.textContent = 'Sending...';
+            statusEl.className = 'text-sm text-slate-500';
+            try {
+              const res = await fetch(form.action, {
+                method: 'POST',
+                headers: {
+                  'Accept': 'application/json'
+                },
+                body: data
+              });
+              if (res.ok) {
+                statusEl.textContent = 'Thanks! Your message has been sent.';
+                statusEl.className = 'text-sm text-green-600';
+                showToast('Thanks! Your message has been sent.', 'success');
+                form.reset();
+              } else {
+                const err = await res.json().catch(() => ({}));
+                const msg = err.error || 'Something went wrong. Please try again later.';
+                statusEl.textContent = msg;
+                statusEl.className = 'text-sm text-red-600';
+                showToast(msg, 'error');
+              }
+            } catch (err) {
+              const msg = 'Network error. Please check your connection and try again.';
+              statusEl.textContent = msg;
+              statusEl.className = 'text-sm text-red-600';
+              showToast(msg, 'error');
+            } finally {
+              submitBtn.disabled = false;
+            }
+          });
+        }
+        // Prefill contact form when clicking Request a Demo
+        document.querySelectorAll('a[data-demo]').forEach(btn => {
+          btn.addEventListener('click', () => {
+            const msg = document.getElementById('message');
+            if (msg && ! msg.value) {
+              msg.value = "I'd like to request a demo of Samplify.";
+            }
+          });
+        });
+        // Image fallback for missing assets (avoid broken images)
+        document.querySelectorAll('img.with-fallback[data-fallback]').forEach(img => {
+          img.addEventListener('error', () => {
+            const note = document.createElement('div');
+            note.className = 'w-full rounded-lg border border-slate-200 bg-slate-50 p-4 text-slate-600 text-sm';
+            note.setAttribute('role', 'note');
+            note.textContent = img.getAttribute('data-fallback') || 'Image currently unavailable.';
+            img.replaceWith(note);
+          }, {once: true});
+        });
+      </script>
+      {% if site.analyticsEnabled %}
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.googleAnalyticsId }}"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          gtag('js', new Date());
+          gtag('config', '{{ site.googleAnalyticsId }}');
+        </script>
+        <!-- PostHog Analytics -->
+        <script>
+          !function (t, e) {
+            var o,
+              n,
+              p,
+              r;
+            e.__SV || (window.posthog = e, e._i =[], e.init = function (i, s, a) {
+              function g(t, e) {
+                var o = e.split(".");
+                2 == o.length && (t = t[o[0]], e = o[1]),
+                t[e] = function () {
+                  t.push([e].concat(Array
+                    .prototype
+                    .slice
+                    .call(arguments, 0)))
+                }
+              }(p = t.createElement("script")).type = "text/javascript",
+              p.crossOrigin = "anonymous",
+              p.async = !0,
+              p.src = s.api_host.replace(".i.posthog.com", "-assets.i.posthog.com") + "/static/array.js",
+              (r = t.getElementsByTagName("script")[0]).parentNode.insertBefore(p, r);
+              var u = e;
+              for (
+                void 0 !== a
+                  ? u = e[a] =[]
+                  : a = "posthog",
+                u.people = u.people || [],
+                u.toString = function (t) {
+                var e = "posthog";
+                  return "posthog" !== a && (e += "." + a),
+                  t || (e += " (stub)"),
+                  e
+                },
+                u.people.toString = function () {
+                return u.toString(1) + ".people (stub)"
+                },
+                o = "init Re Ms Fs Pe Rs Cs capture Ve calculateEventProperties Ds register register_once register_for_session unregister unr" +
+                  "egister_for_session zs getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags updateEarlyAccessFeature" +
+                  "Enrollment getEarlyAccessFeatures on onFeatureFlags onSurveysLoaded onSessionId getSurveys getActiveMatchingSurveys rend" +
+                  "erSurvey canRenderSurvey canRenderSurveyAsync identify setPersonProperties group resetGroups setPersonPropertiesForFlags" +
+                  " resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups g" +
+                  "et_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted" +
+                  " captureException loadToolbar get_property getSessionProperty Ls As createPersonProfile Ns Is Us opt_in_capturing opt_ou" +
+                  "t_capturing has_opted_in_capturing has_opted_out_capturing is_capturing clear_opt_in_out_capturing Os debug I js getPage" +
+                  "ViewId captureTraceFeedback captureTraceMetric".split(" "),
+                n = 0; n < o.length; n++
+              ) 
+                g(u, o[n]);
+              
+              e._i.push([i, s, a])
+            }, e.__SV = 1)
+          }(document, window.posthog || []);
+          posthog.init('{{ site.posthogKey }}', {
+            api_host: '{{ site.posthogHost }}',
+            defaults: '{{ site.posthogDefaults }}',
+            person_profiles: 'always'
+          });
+        </script>
+      {% endif %}
+      <!-- Font Awesome -->
+      <link rel="preconnect" href="https://ka-f.fontawesome.com/"/>
+      <script src="https://kit.fontawesome.com/a51f251d24.js" crossorigin="anonymous" defer></script>
+      {% block scripts %}{% endblock %}
+    </body>
+  </html>
