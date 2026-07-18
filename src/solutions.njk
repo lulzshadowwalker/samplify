@@ -18,34 +18,8 @@ ogDescription: Advanced medical sample logistics technology with real-time track
 
 {% block content %}
 <!-- Hero Section -->
-<section class="relative isolate overflow-hidden bg-gradient-to-b from-skybrand-300 via-skybrand-500 to-deepblue-900 py-16 sm:py-20">
-  <div class="absolute inset-0 -z-10 opacity-20">
-    <svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" viewBox="0 0 800 600" class="h-full w-full">
-      <defs>
-        <linearGradient id="g" x1="0" x2="1" y1="0" y2="1">
-          <stop stop-color="#ffffff" stop-opacity="0.3" offset="0"/>
-          <stop stop-color="#87CEEB" stop-opacity="0.2" offset="1"/>
-        </linearGradient>
-      </defs>
-      <g fill="url(#g)">
-        <circle cx="200" cy="150" r="80"/>
-        <rect x="450" y="100" width="200" height="140" rx="15"/>
-        <circle cx="600" cy="400" r="90"/>
-        <rect x="150" y="350" width="160" height="120" rx="15"/>
-      </g>
-    </svg>
-  </div>
-  
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
-    <div class="reveal">
-      <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight">Smart Medical Logistics Solutions</h1>
-      <p class="mt-6 text-lg sm:text-xl text-white/90 max-w-3xl mx-auto">
-        Comprehensive technology ecosystem designed to transform medical sample logistics 
-        with precision, safety, and real-time visibility.
-      </p>
-    </div>
-  </div>
-</section>
+{% from "hero.njk" import hero %}
+{{ hero("Smart Medical Logistics Solutions", "Comprehensive technology ecosystem designed to transform medical sample logistics with precision, safety, and real-time visibility.") }}
 
 <!-- Complete Solution Overview -->
 <section class="py-16 sm:py-20 bg-white">

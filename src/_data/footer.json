@@ -1,0 +1,17 @@
+{
+  "quickLinks": [
+    {"label": "About", "url": "/about"},
+    {"label": "Solutions", "url": "/solutions"},
+    {"label": "Products", "url": "/products"},
+    {"label": "Industries", "url": "/industries"},
+    {"label": "Gallery", "url": "/gallery"},
+    {"label": "Contact", "url": "/contact"}
+  ],
+  "contactLinks": [
+    {"label": "bd@samplify.net", "url": "mailto:bd@samplify.net"},
+    {"label": "+966 53 303 8526", "url": "tel:+966533038526"},
+    {"label": "LinkedIn", "url": "https://www.linkedin.com/company/samplifyhealthcarelogistics/", "target": "_blank", "rel": "noopener"},
+    {"label": "Facebook", "url": "https://www.facebook.com/Samplify.sa/", "target": "_blank", "rel": "noopener"},
+    {"label": "Instagram", "url": "https://www.instagram.com/samplify.sa/", "target": "_blank", "rel": "noopener"}
+  ]
+}

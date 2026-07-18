@@ -67,33 +67,8 @@ ogDescription: Certified UN3373 insulated cooler bags for safe transport of biol
 
 {% block content %}
 <!-- Hero Section -->
-<section class="relative isolate overflow-hidden bg-gradient-to-b from-skybrand-300 via-skybrand-500 to-deepblue-900 py-16 sm:py-20">
-  <div class="absolute inset-0 -z-10 opacity-20">
-    <svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" viewBox="0 0 800 600" class="h-full w-full">
-      <defs>
-        <linearGradient id="g" x1="0" x2="1" y1="0" y2="1">
-          <stop stop-color="#ffffff" stop-opacity="0.3" offset="0"/>
-          <stop stop-color="#87CEEB" stop-opacity="0.2" offset="1"/>
-        </linearGradient>
-      </defs>
-      <g fill="url(#g)">
-        <circle cx="150" cy="130" r="70"/>
-        <rect x="500" y="90" width="200" height="140" rx="15"/>
-        <circle cx="650" cy="430" r="85"/>
-        <rect x="110" y="360" width="160" height="120" rx="15"/>
-      </g>
-    </svg>
-  </div>
-
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
-    <div class="reveal">
-      <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight">Our Products</h1>
-      <p class="mt-6 text-lg sm:text-xl text-white/90 max-w-3xl mx-auto">
-        Certified medical logistics solutions designed for safety, compliance, and precision in biological material transport.
-      </p>
-    </div>
-  </div>
-</section>
+{% from "hero.njk" import hero %}
+{{ hero("Our Products", "Certified medical logistics solutions designed for safety, compliance, and precision in biological material transport.") }}
 
 <!-- Product: Nivalis UN3373 Insulated Cooler Bags -->
 <section class="py-16 sm:py-20 bg-white">

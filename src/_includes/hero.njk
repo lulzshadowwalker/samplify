@@ -1,0 +1,32 @@
+{% macro hero(title, subtitle, badge='') %}
+<section class="relative isolate overflow-hidden bg-gradient-to-b from-skybrand-300 via-skybrand-500 to-deepblue-900 py-20 sm:py-28">
+
+  {# ── Atmospheric orbs ─────────────────────────────────────────── #}
+  <div aria-hidden="true" class="absolute rounded-full blur-[80px] pointer-events-none z-0 opacity-45 w-[520px] h-[520px] -top-[120px] -left-[100px] bg-[radial-gradient(circle,oklch(80%_0.18_230)_0%,transparent_70%)]"></div>
+  <div aria-hidden="true" class="absolute rounded-full blur-[80px] pointer-events-none z-0 opacity-[0.55] w-[420px] h-[420px] -bottom-[100px] -right-[80px] bg-[radial-gradient(circle,oklch(30%_0.05_260)_0%,transparent_70%)]"></div>
+
+  {# ── Mesh / grid noise texture ────────────────────────────────── #}
+  <div aria-hidden="true" class="absolute inset-0 z-0 bg-[radial-gradient(circle,rgba(255,255,255,0.12)_1px,transparent_1px)] bg-[size:28px_28px] [mask-image:linear-gradient(to_bottom,transparent_0%,black_20%,black_80%,transparent_100%)] pointer-events-none"></div>
+
+  {# ── Glassmorphism divider at bottom ──────────────────────────── #}
+  <div aria-hidden="true" class="absolute bottom-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent z-10">
+    <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[60%] h-[40px] bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.12)_0%,transparent_70%)] blur-[8px]"></div>
+  </div>
+
+  {# ── Content ──────────────────────────────────────────────────── #}
+  <div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
+    <div class="reveal">
+
+      {# Optional pill badge #}
+      {% if badge %}
+      <span class="inline-flex items-center gap-1.5 mb-6 px-4 py-1.5 rounded-full bg-white/10 border border-white/25 backdrop-blur-[8px] text-[0.8125rem] font-medium tracking-[0.04em] text-white/90">{{ badge }}</span>
+      {% endif %}
+
+      <h1 class="text-[clamp(2rem,5vw,3.25rem)] font-extrabold tracking-[-0.02em] leading-[1.1] [text-shadow:0_2px_24px_rgba(0,0,0,0.18)] mb-5 text-balance">{{ title }}</h1>
+      <p class="text-[clamp(1rem,2.2vw,1.2rem)] leading-[1.7] text-white/80 max-w-3xl mx-auto font-normal text-pretty">{{ subtitle | safe }}</p>
+
+    </div>
+  </div>
+
+</section>
+{% endmacro %}
